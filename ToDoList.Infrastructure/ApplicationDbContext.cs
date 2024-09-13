@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Domain.Entities;
+using Task = ToDoList.Domain.Entities.Task;
 
 namespace ToDoList.Infrastructure;
 
@@ -7,7 +8,7 @@ public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
-    public DbSet<ToDoTask> ToDoTasks { get; set; }
+    public DbSet<Task> Tasks { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Tag> Tags { get; set; }
     public DbSet<TaskTagAssociation> TaskTagAssociations { get; set; }

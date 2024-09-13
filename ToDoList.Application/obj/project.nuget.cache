@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ah2VY/V1J892ptduUW5eFBAsBJLicseGKERqLRhlixcqAT9w+fI71v9LO5GfiFMvqa9Vi/uZ+QKCE7A5RktfGw==",
+  "dgSpecHash": "kK9GXRWdnYFH/KOCIZmc/SwkALi1a+j4a5YyP9sg2pwrdLGiYEPz64TC9nOphYFyWtrkFKeL4KO1gEBs6oWeZg==",
   "success": true,
   "projectFilePath": "C:\\ITProjects\\.Net\\!PetProjects\\ToDoList\\ToDoList.Application\\ToDoList.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\semen\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

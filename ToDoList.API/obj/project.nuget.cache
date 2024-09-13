@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "84N/qga3rNRNNzzs/S/AlGPp6hgaHssAmfZLBhZV2e8GkBnG6BtUMunE6N+QAy+03LnPGlmleE/ZM3nUuzjdbA==",
+  "dgSpecHash": "5X2K2aJG86UJJ0iy/M16FYkvIcjRbjCW6yY8jTqFMtb5XJomKp5ZVOB53YBXoAfKf0t+xiwSK9hhDgFUdSqszA==",
   "success": true,
   "projectFilePath": "C:\\ITProjects\\.Net\\!PetProjects\\ToDoList\\ToDoList.API\\ToDoList.API.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,8 @@
     "C:\\Users\\semen\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
     "C:\\Users\\semen\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\semen\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\semen\\.nuget\\packages\\npgsql\\8.0.3\\npgsql.8.0.3.nupkg.sha512",
+    "C:\\Users\\semen\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\8.0.4\\npgsql.entityframeworkcore.postgresql.8.0.4.nupkg.sha512",
     "C:\\Users\\semen\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\semen\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\semen\\.nuget\\packages\\system.composition\\6.0.0\\system.composition.6.0.0.nupkg.sha512",

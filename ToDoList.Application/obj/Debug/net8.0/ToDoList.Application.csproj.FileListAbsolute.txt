@@ -1,0 +1,16 @@
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\obj\Debug\net8.0\ToDoList.Application.csproj.AssemblyReference.cache
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\obj\Debug\net8.0\ToDoList.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\obj\Debug\net8.0\ToDoList.Application.AssemblyInfoInputs.cache
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\obj\Debug\net8.0\ToDoList.Application.AssemblyInfo.cs
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\obj\Debug\net8.0\ToDoList.Application.csproj.CoreCompileInputs.cache
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\obj\Debug\net8.0\ToDoList.Application.sourcelink.json
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\bin\Debug\net8.0\ToDoList.Application.deps.json
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\bin\Debug\net8.0\ToDoList.Application.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\bin\Debug\net8.0\ToDoList.Application.pdb
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\bin\Debug\net8.0\ToDoList.Domain.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\bin\Debug\net8.0\ToDoList.Domain.pdb
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\obj\Debug\net8.0\ToDoList.ED2F2C6F.Up2Date
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\obj\Debug\net8.0\ToDoList.Application.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\obj\Debug\net8.0\refint\ToDoList.Application.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\obj\Debug\net8.0\ToDoList.Application.pdb
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.Application\obj\Debug\net8.0\ref\ToDoList.Application.dll

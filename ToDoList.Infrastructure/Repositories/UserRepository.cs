@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Application.Contracts;
 using ToDoList.Domain.Entities;
+using Task = System.Threading.Tasks.Task;
 
 namespace ToDoList.Infrastructure.Repositories;
 

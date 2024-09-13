@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Application.Contracts;
 using ToDoList.Domain.Entities;
+using Task = System.Threading.Tasks.Task;
 
 namespace ToDoList.Infrastructure.Repositories;
 
@@ -17,7 +18,7 @@ public class TagRepository : ITagRepository
     {
         return await _context.Tags
             .Include(tag => tag.TaskTagAssociations)
-            .ThenInclude(association => association.ToDoTask)
+            .ThenInclude(association => association.Task)
             .FirstOrDefaultAsync(tag => tag.Id == id);
     }
 

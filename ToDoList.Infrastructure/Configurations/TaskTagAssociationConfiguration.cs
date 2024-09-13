@@ -8,14 +8,14 @@ public class TaskTagAssociationConfiguration: IEntityTypeConfiguration<TaskTagAs
 {
     public void Configure(EntityTypeBuilder<TaskTagAssociation> builder)
     {
-        builder.HasKey(tt => new { tt.ToDoTaskId, tt.TagId });
+        builder.HasKey(association => new {association.TaskId, association.TagId });
 
-        builder.HasOne(tt => tt.ToDoTask)
-            .WithMany(t => t.TaskTagAssociations)
-            .HasForeignKey(tt => tt.ToDoTaskId);
+        builder.HasOne(association => association.Task)
+            .WithMany(task => task.TaskTagAssociations)
+            .HasForeignKey(association => association.TaskId);
 
-        builder.HasOne(tt => tt.Tag)
-            .WithMany(t => t.TaskTagAssociations)
-            .HasForeignKey(tt => tt.TagId);
+        builder.HasOne(association => association.Tag)
+            .WithMany(tag => tag.TaskTagAssociations)
+            .HasForeignKey(association => association.TagId);
     }
 }

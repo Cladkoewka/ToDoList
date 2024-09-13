@@ -13,5 +13,5 @@ public class User
     [Required]
     public string PasswordHash { get; set; }
     
-    public ICollection<ToDoTask> Tasks { get; set; } = new List<ToDoTask>();
+    public ICollection<Task> Tasks { get; set; } = new List<Task>();
 }

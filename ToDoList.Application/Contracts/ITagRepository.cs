@@ -1,4 +1,5 @@
 using ToDoList.Domain.Entities;
+using Task = System.Threading.Tasks.Task;
 
 namespace ToDoList.Application.Contracts;
 
