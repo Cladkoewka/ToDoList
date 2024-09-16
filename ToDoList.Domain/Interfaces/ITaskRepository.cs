@@ -1,7 +1,6 @@
-using ToDoList.Domain.Entities;
 using Task = ToDoList.Domain.Entities.Task;
 
-namespace ToDoList.Application.Contracts;
+namespace ToDoList.Domain.Interfaces;
 
 public interface ITaskRepository
 {

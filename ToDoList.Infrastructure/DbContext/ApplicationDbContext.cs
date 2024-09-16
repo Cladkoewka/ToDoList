@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using ToDoList.Domain.Entities;
 using Task = ToDoList.Domain.Entities.Task;
 
-namespace ToDoList.Infrastructure;
+namespace ToDoList.Infrastructure.DbContext;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 

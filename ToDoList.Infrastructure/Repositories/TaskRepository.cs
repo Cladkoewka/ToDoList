@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using ToDoList.Application.Contracts;
+using ToDoList.Domain.Interfaces;
+using ToDoList.Infrastructure.DbContext;
 using Task = ToDoList.Domain.Entities.Task;
 
 namespace ToDoList.Infrastructure.Repositories;

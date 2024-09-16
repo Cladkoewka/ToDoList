@@ -1,53 +1,67 @@
-using ToDoList.Application.Contracts;
+using ToDoList.Application.DTOs.User;
 using ToDoList.Application.Services.Interfaces;
-using ToDoList.Domain.Entities;
-using Task = System.Threading.Tasks.Task;
+using ToDoList.Application.Services.Mapping;
+using ToDoList.Domain.Interfaces;
 
 namespace ToDoList.Application.Services.Implementations;
 
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
-    private readonly ITaskRepository _taskRepository;
+    private readonly IUserMapper _userMapper;
 
-    public UserService(IUserRepository userRepository, ITaskRepository taskRepository)
+    public UserService(IUserRepository userRepository, IUserMapper userMapper)
     {
         _userRepository = userRepository;
-        _taskRepository = taskRepository;
-    }
-    
-    public async Task<User?> GetUserByIdAsync(int id)
-    {
-        return await _userRepository.GetByIdAsync(id);
+        _userMapper = userMapper;
     }
 
-    public async Task<User?> GetUserByEmailAsync(string email)
-    {
-        return await _userRepository.GetByEmailAsync(email);
-    }
 
-    public async Task<IEnumerable<User>> GetAllUsersAsync()
-    {
-        return await _userRepository.GetAllAsync();
-    }
-
-    public async Task AddUserAsync(User user)
-    {
-        await _userRepository.AddAsync(user);
-    }
-
-    public async Task UpdateUserAsync(User user)
-    {
-        await _userRepository.UpdateAsync(user);
-    }
-
-    public async Task DeleteUserAsync(int id)
+    public async Task<UserGetDto?> GetUserByIdAsync(int id)
     {
         var user = await _userRepository.GetByIdAsync(id);
-        if (user == null)
-        {
-            throw new KeyNotFoundException($"User with ID {id} not found.");
-        }
-        await _userRepository.DeleteAsync(user);
+        return user != null ? _userMapper.MapToGetDto(user) : null;
+    }
+
+    public async Task<UserGetDto?> GetUserByEmailAsync(string email)
+    {
+        var user = await _userRepository.GetByEmailAsync(email);
+        return user != null ? _userMapper.MapToGetDto(user) : null;
+    }
+
+    public async Task<IEnumerable<UserGetDto>> GetAllUsersAsync()
+    {
+        var users = await _userRepository.GetAllAsync();
+        return users.Select(_userMapper.MapToGetDto).ToList();
+    }
+
+    public async Task<UserGetDto?> CreateUserAsync(UserCreateDto userDto)
+    {
+        var user = _userMapper.MapToEntity(userDto);
+        await _userRepository.AddAsync(user);
+        
+        return _userMapper.MapToGetDto(user);
+    }
+
+    public async Task<bool> UpdateUserAsync(int id, UserUpdateDto userDto)
+    {
+        var existingUser = await _userRepository.GetByIdAsync(id);
+        if (existingUser == null)
+            return false;
+
+        existingUser = _userMapper.MapToEntity(userDto, existingUser);
+        await _userRepository.UpdateAsync(existingUser);
+        
+        return true;
+    }
+
+    public async Task<bool> DeleteUserAsync(int id)
+    {
+        var existingUser = await _userRepository.GetByIdAsync(id);
+        if (existingUser == null)
+            return false;
+
+        await _userRepository.DeleteAsync(existingUser);
+        return true;
     }
 }

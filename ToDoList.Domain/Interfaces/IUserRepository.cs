@@ -1,7 +1,7 @@
 using ToDoList.Domain.Entities;
 using Task = System.Threading.Tasks.Task;
 
-namespace ToDoList.Application.Contracts;
+namespace ToDoList.Domain.Interfaces;
 
 public interface IUserRepository
 {

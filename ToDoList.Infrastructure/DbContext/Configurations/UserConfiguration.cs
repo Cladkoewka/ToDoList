@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ToDoList.Domain.Entities;
 
-namespace ToDoList.Infrastructure.Configurations;
+namespace ToDoList.Infrastructure.DbContext.Configurations;
 
 public class UserConfiguration : IEntityTypeConfiguration<User>
 {

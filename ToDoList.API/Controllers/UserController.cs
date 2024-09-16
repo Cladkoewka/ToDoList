@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.API.Contracts;
-using ToDoList.Application.Services.Implementations;
-using ToDoList.Domain.Entities;
+using ToDoList.Application.DTOs.User;
+using ToDoList.Application.Services.Interfaces;
 
 namespace ToDoList.API.Controllers;
 
@@ -10,87 +8,74 @@ namespace ToDoList.API.Controllers;
 [Route("[controller]")]
 public class UserController : ControllerBase
 {
-    private readonly UserService _userService;
+    private readonly IUserService _userService;
 
-    public UserController(UserService userService)
+    public UserController(IUserService userService)
     {
         _userService = userService;
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
+    public async Task<ActionResult<IEnumerable<UserGetDto>>> GetAllUsers()
     {
         var users = await _userService.GetAllUsersAsync();
         return Ok(users);
     }
 
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<User>> GetUserById(int id)
+    public async Task<ActionResult<UserGetDto>> GetUserById(int id)
     {
         var user = await _userService.GetUserByIdAsync(id);
         if (user == null)
-        {
             return NotFound($"User with ID {id} not found.");
-        }
 
         return Ok(user);
     }
     
-    [HttpGet("{email}")]
-    public async Task<ActionResult<User>> GetUserById(string email)
+    [HttpGet("email/{email}")]
+    public async Task<ActionResult<UserGetDto>> GetUserByEmail(string email)
     {
         var user = await _userService.GetUserByEmailAsync(email);
         if (user == null)
-        {
             return NotFound($"User with email {email} not found.");
-        }
 
         return Ok(user);
     }
 
     [HttpPost]
-    public async Task<ActionResult> AddUser([FromBody] AddUserRequest request)
+    public async Task<ActionResult> AddUser([FromBody] UserCreateDto userDto)
     {
         if (!ModelState.IsValid)
-        {
             return BadRequest(ModelState);
-        }
 
-        var user = new User
-        {
-            Email = request.Email,
-            PasswordHash = request.PasswordHash,
-            Username = request.Username
-        };
+        var createdUser = await _userService.CreateUserAsync(userDto);
 
-        await _userService.AddUserAsync(user);
-        return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+        if (createdUser == null)
+            return BadRequest("User could not be created.");
+
+        return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
     }
 
     [HttpPut("{id:int}")]
-    public async Task<ActionResult> UpdateUser(int id, [FromBody] UpdateUserRequest request)
+    public async Task<ActionResult> UpdateUser(int id, [FromBody] UserUpdateDto userDto)
     {
         if (!ModelState.IsValid)
-        {
             return BadRequest(ModelState);
-        }
 
-        var user = new User
-        {
-            Email = request.Email,
-            PasswordHash = request.PasswordHash,
-            Username = request.Username
-        };
+        var success = await _userService.UpdateUserAsync(id, userDto);
+        if (!success)
+            return NotFound($"User with ID {id} not found.");
 
-        await _userService.UpdateUserAsync(user);
-        
         return NoContent();
     }
 
     [HttpDelete("{id:int}")]
     public async Task<ActionResult> DeleteUser(int id)
     {
-        await _userService.DeleteUserAsync(id);
+        var success = await _userService.DeleteUserAsync(id);
+        if (!success)
+            return NotFound($"User with ID {id} not found.");
+
         return NoContent();
     }
 }
