@@ -110,3 +110,6 @@ C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Swashbuck
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\obj\Debug\net8.0\ToDoList.API.MvcApplicationPartsAssemblyInfo.cs
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\FluentValidation.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

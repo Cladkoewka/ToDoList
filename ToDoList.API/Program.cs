@@ -1,7 +1,12 @@
+using System.Reflection;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Application.Services.Implementations;
 using ToDoList.Application.Services.Interfaces;
 using ToDoList.Application.Services.Mapping;
+using ToDoList.Application.Validation.Task;
+using ToDoList.Application.Validation.User;
 using ToDoList.Domain.Interfaces;
 using ToDoList.Infrastructure.DbContext;
 using ToDoList.Infrastructure.Repositories;
@@ -28,6 +33,8 @@ services.AddScoped<ITagService, TagService>();
 services.AddSwaggerGen();
 
 services.AddControllers();
+services.AddFluentValidation()
+    .AddValidatorsFromAssembly(typeof(UserCreateDtoValidator).Assembly);
 
 var app = builder.Build();
 

@@ -10,7 +10,7 @@ public class TaskMapper : ITaskMapper
         return new TaskGetDto
         {
             Description = task.Description,
-            DueTime = task.DueTime,
+            CreatedTime = task.CreatedTime,
             Id = task.Id,
             IsCompleted = task.IsCompleted,
             LastUpdateTime = task.LastUpdateTime,
@@ -23,8 +23,8 @@ public class TaskMapper : ITaskMapper
         return new Task
         {
             Description = taskDto.Description,
-            DueTime = taskDto.DueTime,
-            LastUpdateTime = taskDto.DueTime,
+            CreatedTime = taskDto.CreatedTime,
+            LastUpdateTime = taskDto.CreatedTime,
             Title = taskDto.Title,
             UserId = taskDto.UserId
         };

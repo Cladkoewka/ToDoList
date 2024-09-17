@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "eVkTu6tXnjdg5SjajQ1VPxmALUk81+Akn+p4SCebmWZjq2xJEJKer8Y5lNlEpVI6jUjzc0IqQqCtsFnX7WdJzg==",
+  "dgSpecHash": "nJEr/keZJ7aM1FmTl03SMfuUrEv1NdhSP0EGHvRLWQDKl6rIDR4pJMPFfmE/2M2ksDnxwJXQe6DSI5/TYB9Xug==",
   "success": true,
   "projectFilePath": "C:\\ITProjects\\.Net\\!PetProjects\\ToDoList\\ToDoList.API\\ToDoList.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\semen\\.nuget\\packages\\fluentvalidation\\11.10.0\\fluentvalidation.11.10.0.nupkg.sha512",
+    "C:\\Users\\semen\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\semen\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\semen\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\semen\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\semen\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",

@@ -6,7 +6,7 @@ public class TaskCreateDto
 
     public string Description { get; set; }
 
-    public DateTime DueTime { get; set; }
+    public DateTime CreatedTime { get; set; }
 
     public int UserId { get; set; }
 
