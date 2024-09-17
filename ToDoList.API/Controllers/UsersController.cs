@@ -5,12 +5,12 @@ using ToDoList.Application.Services.Interfaces;
 namespace ToDoList.API.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class UserController : ControllerBase
+[Route("api/[controller]")]
+public class UsersController : ControllerBase
 {
     private readonly IUserService _userService;
 
-    public UserController(IUserService userService)
+    public UsersController(IUserService userService)
     {
         _userService = userService;
     }

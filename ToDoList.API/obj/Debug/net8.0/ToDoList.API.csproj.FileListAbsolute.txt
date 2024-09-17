@@ -105,3 +105,8 @@ C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\obj\Debug\net8.0\refint\To
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\obj\Debug\net8.0\ToDoList.API.pdb
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\obj\Debug\net8.0\ToDoList.API.genruntimeconfig.cache
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\obj\Debug\net8.0\ref\ToDoList.API.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\obj\Debug\net8.0\ToDoList.API.MvcApplicationPartsAssemblyInfo.cs

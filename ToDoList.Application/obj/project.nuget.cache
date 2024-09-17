@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kK9GXRWdnYFH/KOCIZmc/SwkALi1a+j4a5YyP9sg2pwrdLGiYEPz64TC9nOphYFyWtrkFKeL4KO1gEBs6oWeZg==",
+  "dgSpecHash": "Pb4+HrKRHZkC/VvmGocv/wzjaOquLO1CvZSrC2kJRh7azuTZBitjG0AkU92iVqET2xZyschGouyAG7u/XJO+1g==",
   "success": true,
   "projectFilePath": "C:\\ITProjects\\.Net\\!PetProjects\\ToDoList\\ToDoList.Application\\ToDoList.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\semen\\.nuget\\packages\\fluentvalidation\\11.10.0\\fluentvalidation.11.10.0.nupkg.sha512",
     "C:\\Users\\semen\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
   ],
   "logs": []
