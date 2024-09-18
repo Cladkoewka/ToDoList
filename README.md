@@ -40,21 +40,6 @@ The project showcases key principles of separation of concerns, flexibility, and
 - **PUT /api/users/{id}** — Updates an existing user.
 - **DELETE /api/users/{id}** — Deletes a user by their ID.
 
-## Getting Started
+## Frontend Example
+![Front](https://github.com/user-attachments/assets/e3828576-85ea-4f59-b40d-42cca9947d3c)
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Cladkoewka/your-repo-name.git
-   ```
-
-2. Configure the database connection string in `appsettings.json`.
-
-3. Apply database migrations:
-   ```bash
-   dotnet ef database update
-   ```
-
-4. Run the project:
-   ```bash
-   dotnet run
-   ```
