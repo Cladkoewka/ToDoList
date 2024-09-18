@@ -21,6 +21,13 @@ public class TasksController : ControllerBase
         var tasks = await _taskService.GetAllTasksAsynt();
         return Ok(tasks);
     }
+    
+    [HttpGet("by-tags")]
+    public async Task<ActionResult<IEnumerable<TaskGetDto>>> GetTasksByTags([FromQuery] IEnumerable<int> tagIds)
+    {
+        var tasks = await _taskService.GetTasksByTagsAsync(tagIds);
+        return Ok(tasks);
+    }
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<TaskGetDto>> GetTaskById(int id)

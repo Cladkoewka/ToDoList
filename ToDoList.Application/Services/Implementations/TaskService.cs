@@ -8,11 +8,13 @@ namespace ToDoList.Application.Services.Implementations;
 public class TaskService : ITaskService
 {
     private readonly ITaskRepository _taskRepository;
+    private readonly ITagRepository _tagRepository;
     private readonly ITaskMapper _taskMapper;
 
-    public TaskService(ITaskRepository taskRepository, ITaskMapper taskMapper)
+    public TaskService(ITaskRepository taskRepository, ITagRepository tagRepository, ITaskMapper taskMapper)
     {
         _taskRepository = taskRepository;
+        _tagRepository = tagRepository;
         _taskMapper = taskMapper;
     }
     
@@ -27,10 +29,17 @@ public class TaskService : ITaskService
         var tasks = await _taskRepository.GetAllAsync();
         return tasks.Select(_taskMapper.MapToGetDto).ToList();
     }
+    
+    public async Task<IEnumerable<TaskGetDto>> GetTasksByTagsAsync(IEnumerable<int> tagIds)
+    {
+        var tasks = await _taskRepository.GetByTagsAsync(tagIds);
+        return tasks.Select(_taskMapper.MapToGetDto).ToList();
+    }
 
     public async Task<TaskGetDto?> CreateTaskAsync(TaskCreateDto taskDto)
     {
-        var task = _taskMapper.MapToEntity(taskDto);
+        var tags = await _tagRepository.GetTagsByIdsAsync(taskDto.TagIds);
+        var task = _taskMapper.MapToEntity(taskDto, tags);
         await _taskRepository.AddAsync(task);
 
         return _taskMapper.MapToGetDto(task);
@@ -42,7 +51,9 @@ public class TaskService : ITaskService
         if (existingTask == null)
             return false;
 
-        existingTask = _taskMapper.MapToEntity(taskDto, existingTask);
+        var tags = await _tagRepository.GetTagsByIdsAsync(taskDto.TagIds);
+
+        existingTask = _taskMapper.MapToEntity(taskDto, existingTask, tags);
         await _taskRepository.UpdateAsync(existingTask);
 
         return true;

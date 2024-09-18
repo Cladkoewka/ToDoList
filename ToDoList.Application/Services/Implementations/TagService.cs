@@ -31,6 +31,10 @@ public class TagService : ITagService
 
     public async Task<TagGetDto?> CreateTagAsync(TagCreateDto tagDto)
     {
+        var existingTag = await _tagRepository.GetByNameAsync(tagDto.Name);
+        if (existingTag != null)
+            return null;
+        
         var tag = _tagMapper.MapToEntity(tagDto);
         await _tagRepository.AddAsync(tag);
 

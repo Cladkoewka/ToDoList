@@ -22,10 +22,25 @@ public class TagRepository : ITagRepository
             .ThenInclude(association => association.Task)
             .FirstOrDefaultAsync(tag => tag.Id == id);
     }
+    
+    public async Task<Tag?> GetByNameAsync(string name)
+    {
+        return await _context.Tags
+            .Include(tag => tag.TaskTagAssociations)
+            .ThenInclude(association => association.Task)
+            .FirstOrDefaultAsync(tag => tag.Name == name);
+    }
 
     public async Task<IEnumerable<Tag>> GetAllAsync()
     {
         return await _context.Tags
+            .ToListAsync();
+    }
+    
+    public async Task<IEnumerable<Tag>> GetTagsByIdsAsync(IEnumerable<int> tagIds)
+    {
+        return await _context.Tags
+            .Where(tag => tagIds.Contains(tag.Id))
             .ToListAsync();
     }
 

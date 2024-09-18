@@ -37,6 +37,10 @@ public class UserService : IUserService
 
     public async Task<UserGetDto?> CreateUserAsync(UserCreateDto userDto)
     {
+        var existingUser = await _userRepository.GetByEmailAsync(userDto.Email);
+        if (existingUser != null)
+            return null;
+        
         var user = _userMapper.MapToEntity(userDto);
         await _userRepository.AddAsync(user);
         
