@@ -25,6 +25,8 @@ public class TaskRepository : ITaskRepository
     public async Task<IEnumerable<Task>> GetAllAsync()
     {
         return await _context.Tasks
+            .Include(task => task.TaskTagAssociations)
+            .ThenInclude(association => association.Tag)
             .ToListAsync();
     }
 

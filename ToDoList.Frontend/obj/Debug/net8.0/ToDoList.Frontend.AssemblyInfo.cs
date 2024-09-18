@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("ToDoList.API")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("ToDoList.Frontend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d88b5bad38f63364f39fad447c0db1775a2d7c8")]
-[assembly: System.Reflection.AssemblyProductAttribute("ToDoList.API")]
-[assembly: System.Reflection.AssemblyTitleAttribute("ToDoList.API")]
+[assembly: System.Reflection.AssemblyProductAttribute("ToDoList.Frontend")]
+[assembly: System.Reflection.AssemblyTitleAttribute("ToDoList.Frontend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.

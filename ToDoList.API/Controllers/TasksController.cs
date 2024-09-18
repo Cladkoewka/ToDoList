@@ -14,6 +14,12 @@ public class TasksController : ControllerBase
     {
         _taskService = taskService;
     }
+
+    [HttpGet("test")]
+    public async Task<ActionResult> TestMethod()
+    {
+        return Ok("test string");
+    }
     
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TaskGetDto>>> GetAllTasks()
