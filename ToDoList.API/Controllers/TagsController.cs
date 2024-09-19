@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using ToDoList.Application.DTOs.Tag;
 using ToDoList.Application.Services.Interfaces;
+using ILogger = Serilog.ILogger;
 
 namespace ToDoList.API.Controllers;
 
@@ -9,10 +11,12 @@ namespace ToDoList.API.Controllers;
 public class TagsController : ControllerBase
 {
     private readonly ITagService _tagService;
+    private readonly ILogger _logger;
 
     public TagsController(ITagService tagService)
     {
         _tagService = tagService;
+        _logger = Log.ForContext<TagsController>();
     }
     
     [HttpGet]
@@ -36,7 +40,10 @@ public class TagsController : ControllerBase
     public async Task<ActionResult<TagGetDto>> AddTag([FromBody] TagCreateDto tagDto)
     {
         if (!ModelState.IsValid)
+        {
+            _logger.Warning("Invalid model state for tag creation.");
             return BadRequest(ModelState);
+        }
 
         var createdTag = await _tagService.CreateTagAsync(tagDto);
 
@@ -50,7 +57,10 @@ public class TagsController : ControllerBase
     public async Task<ActionResult> UpdateTag(int id, [FromBody] TagUpdateDto tagDto)
     {
         if (!ModelState.IsValid)
+        {
+            _logger.Warning("Invalid model state for tag update.");
             return BadRequest(ModelState);
+        }
 
         var success = await _tagService.UpdateTagAsync(id, tagDto);
         if (!success)

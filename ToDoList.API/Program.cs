@@ -1,31 +1,46 @@
-using System.Reflection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using ToDoList.Application.Services.Implementations;
 using ToDoList.Application.Services.Interfaces;
 using ToDoList.Application.Services.Mapping;
-using ToDoList.Application.Validation.Task;
 using ToDoList.Application.Validation.User;
 using ToDoList.Domain.Interfaces;
 using ToDoList.Infrastructure.DbContext;
 using ToDoList.Infrastructure.Repositories;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Serilog configuration
+builder.Host.UseSerilog((context, services, configuration) => configuration
+    .ReadFrom.Configuration(context.Configuration)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day));
+
+
 var services = builder.Services;
 var configuration = builder.Configuration;
 
+
+// DbContext configuration
 services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
+// Add repositories
 services.AddScoped<IUserRepository, UserRepository>();
 services.AddScoped<ITagRepository, TagRepository>();
 services.AddScoped<ITaskRepository, TaskRepository>();
 
+// Add mappers
 services.AddScoped<IUserMapper, UserMapper>();
 services.AddScoped<ITagMapper, TagMapper>();
 services.AddScoped<ITaskMapper, TaskMapper>();
 
+// Add services
 services.AddScoped<IUserService, UserService>();
 services.AddScoped<ITaskService, TaskService>();
 services.AddScoped<ITagService, TagService>();
@@ -33,15 +48,20 @@ services.AddScoped<ITagService, TagService>();
 services.AddSwaggerGen();
 
 services.AddControllers();
+
+// Add FluentValidation
 services.AddFluentValidation()
     .AddValidatorsFromAssembly(typeof(UserCreateDtoValidator).Assembly);
 
+
+// Add CORS
+const string CorsName = "AllowFrontend";
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend",
+    options.AddPolicy(CorsName,
         policy =>
         {
-            policy.WithOrigins("http://127.0.0.1:5500") // Порт вашего фронтенда
+            policy.WithOrigins("http://127.0.0.1:5500") // Frontend Port
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });
@@ -49,12 +69,13 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-app.UseCors("AllowFrontend");
-
+app.UseRouting();
+app.UseCors(CorsName);
 app.UseAuthorization();
 
 app.MapControllers();
 
+// Swagger
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -65,6 +86,16 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.MapGet("/", () => "Hello World!");
-
-app.Run();
+try
+{
+    Log.Information("Starting up the app");
+    app.Run();
+}
+catch (Exception e)
+{
+    Log.Fatal(e, "App startup failed");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

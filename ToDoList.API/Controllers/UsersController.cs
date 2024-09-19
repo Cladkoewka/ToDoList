@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using ToDoList.Application.DTOs.User;
 using ToDoList.Application.Services.Interfaces;
+using ILogger = Serilog.ILogger;
 
 namespace ToDoList.API.Controllers;
 
@@ -9,10 +11,12 @@ namespace ToDoList.API.Controllers;
 public class UsersController : ControllerBase
 {
     private readonly IUserService _userService;
+    private readonly ILogger _logger;
 
     public UsersController(IUserService userService)
     {
         _userService = userService;
+        _logger = Log.ForContext<UsersController>();
     }
 
     [HttpGet]
@@ -46,7 +50,10 @@ public class UsersController : ControllerBase
     public async Task<ActionResult> AddUser([FromBody] UserCreateDto userDto)
     {
         if (!ModelState.IsValid)
+        {
+            _logger.Warning("Invalid model state for user creation.");
             return BadRequest(ModelState);
+        }
 
         var createdUser = await _userService.CreateUserAsync(userDto);
 
@@ -60,7 +67,10 @@ public class UsersController : ControllerBase
     public async Task<ActionResult> UpdateUser(int id, [FromBody] UserUpdateDto userDto)
     {
         if (!ModelState.IsValid)
+        {
+            _logger.Warning("Invalid model state for user update.");
             return BadRequest(ModelState);
+        }
 
         var success = await _userService.UpdateUserAsync(id, userDto);
         if (!success)

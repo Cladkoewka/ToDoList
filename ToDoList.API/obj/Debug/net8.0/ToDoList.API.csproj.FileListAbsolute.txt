@@ -113,3 +113,12 @@ C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\obj\Debug\net8.0\ToDoList.
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\FluentValidation.dll
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Sinks.File.dll

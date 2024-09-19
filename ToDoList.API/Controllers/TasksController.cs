@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using ToDoList.Application.DTOs.Task;
 using ToDoList.Application.Services.Interfaces;
+using ILogger = Serilog.ILogger;
 
 namespace ToDoList.API.Controllers;
 
@@ -9,10 +11,12 @@ namespace ToDoList.API.Controllers;
 public class TasksController : ControllerBase
 {
     private readonly ITaskService _taskService;
+    private readonly ILogger _logger;
 
     public TasksController(ITaskService taskService)
     {
         _taskService = taskService;
+        _logger = Log.ForContext<TasksController>();
     }
 
     [HttpGet("test")]
@@ -49,7 +53,10 @@ public class TasksController : ControllerBase
     public async Task<ActionResult<TaskGetDto>> AddTask([FromBody] TaskCreateDto taskDto)
     {
         if (!ModelState.IsValid)
+        {
+            _logger.Warning("Invalid model state for task creation.");
             return BadRequest(ModelState);
+        }
 
         var createdTask = await _taskService.CreateTaskAsync(taskDto);
 
@@ -63,7 +70,10 @@ public class TasksController : ControllerBase
     public async Task<ActionResult> UpdateTask(int id, [FromBody] TaskUpdateDto taskDto)
     {
         if (!ModelState.IsValid)
+        {
+            _logger.Warning("Invalid model state for task update.");
             return BadRequest(ModelState);
+        }
 
         var success = await _taskService.UpdateTaskAsync(id, taskDto);
         if (!success)
