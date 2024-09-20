@@ -1,0 +1,16 @@
+﻿version: '3.7'
+
+services:
+  elasticsearch:
+    image: elasticsearch:8.15.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    networks:
+      - es-net
+
+networks:
+  es-net:

@@ -122,3 +122,9 @@ C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.S
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Sinks.Console.dll
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Sinks.File.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Sinks.Seq.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Elasticsearch.Net.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Nest.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Formatting.Elasticsearch.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Sinks.Elasticsearch.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Serilog.Sinks.PeriodicBatching.dll

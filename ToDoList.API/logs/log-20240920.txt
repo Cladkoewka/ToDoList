@@ -1,0 +1,147 @@
+2024-09-20 07:45:14.664 +03:00 [INF] Starting up the app
+2024-09-20 07:45:14.756 +03:00 [INF] Now listening on: http://localhost:5153
+2024-09-20 07:45:14.760 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-20 07:45:14.762 +03:00 [INF] Hosting environment: Development
+2024-09-20 07:45:14.764 +03:00 [INF] Content root path: C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API
+2024-09-20 07:45:15.167 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/ - null null
+2024-09-20 07:45:15.268 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/ - 301 0 null 104.8266ms
+2024-09-20 07:45:15.285 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.html - null null
+2024-09-20 07:45:15.482 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.html - 200 null text/html;charset=utf-8 197.3591ms
+2024-09-20 07:45:15.597 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger-ui.css - null null
+2024-09-20 07:45:15.602 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.css - null null
+2024-09-20 07:45:15.603 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger-ui-standalone-preset.js - null null
+2024-09-20 07:45:15.603 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger-ui-bundle.js - null null
+2024-09-20 07:45:15.603 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.js - null null
+2024-09-20 07:45:15.616 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.js - 200 null application/javascript;charset=utf-8 12.4408ms
+2024-09-20 07:45:15.619 +03:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2024-09-20 07:45:15.625 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.css - 200 202 text/css 22.5085ms
+2024-09-20 07:45:15.632 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-09-20 07:45:15.632 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-09-20 07:45:15.640 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger-ui.css - 200 152034 text/css 42.6982ms
+2024-09-20 07:45:15.640 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger-ui-standalone-preset.js - 200 230293 text/javascript 36.8126ms
+2024-09-20 07:45:15.655 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-09-20 07:45:15.657 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger-ui-bundle.js - 200 1452753 text/javascript 54.605ms
+2024-09-20 07:45:17.100 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - null null
+2024-09-20 07:45:17.265 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 165.5758ms
+2024-09-20 07:46:04.124 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/api/Tags - null null
+2024-09-20 07:46:04.134 +03:00 [INF] Executing endpoint 'ToDoList.API.Controllers.TagsController.GetAllTags (ToDoList.API)'
+2024-09-20 07:46:04.155 +03:00 [INF] Route matched with {action = "GetAllTags", controller = "Tags"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[ToDoList.Application.DTOs.Tag.TagGetDto]]] GetAllTags() on controller ToDoList.API.Controllers.TagsController (ToDoList.API).
+2024-09-20 07:46:04.557 +03:00 [INF] Executing action method ToDoList.API.Controllers.TagsController.GetAllTags (ToDoList.API) - Validation state: "Valid"
+2024-09-20 07:46:04.561 +03:00 [INF] Fetching all tags
+2024-09-20 07:46:05.928 +03:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Name"
+FROM "Tags" AS t
+2024-09-20 07:46:06.052 +03:00 [INF] Fetched 2 tags
+2024-09-20 07:46:06.060 +03:00 [INF] Executed action method ToDoList.API.Controllers.TagsController.GetAllTags (ToDoList.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1497.5688ms.
+2024-09-20 07:46:06.071 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ToDoList.Application.DTOs.Tag.TagGetDto, ToDoList.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-20 07:46:06.116 +03:00 [INF] Executed action ToDoList.API.Controllers.TagsController.GetAllTags (ToDoList.API) in 1953.0325ms
+2024-09-20 07:46:06.119 +03:00 [INF] Executed endpoint 'ToDoList.API.Controllers.TagsController.GetAllTags (ToDoList.API)'
+2024-09-20 07:46:06.131 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/api/Tags - 200 null application/json; charset=utf-8 2007.0577ms
+2024-09-20 07:46:37.775 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/api/Tags/2412 - null null
+2024-09-20 07:46:37.780 +03:00 [INF] Executing endpoint 'ToDoList.API.Controllers.TagsController.GetTagById (ToDoList.API)'
+2024-09-20 07:46:37.803 +03:00 [INF] Route matched with {action = "GetTagById", controller = "Tags"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[ToDoList.Application.DTOs.Tag.TagGetDto]] GetTagById(Int32) on controller ToDoList.API.Controllers.TagsController (ToDoList.API).
+2024-09-20 07:46:37.829 +03:00 [INF] Executing action method ToDoList.API.Controllers.TagsController.GetTagById (ToDoList.API) - Validation state: "Valid"
+2024-09-20 07:46:37.832 +03:00 [INF] Fetching tag with ID 2412
+2024-09-20 07:46:38.056 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t0."Id", t0."Name", t1."TaskId", t1."TagId", t1."Id", t1."CreatedTime", t1."Description", t1."IsCompleted", t1."LastUpdateTime", t1."Title", t1."UserId"
+FROM (
+    SELECT t."Id", t."Name"
+    FROM "Tags" AS t
+    WHERE t."Id" = @__id_0
+    LIMIT 1
+) AS t0
+LEFT JOIN (
+    SELECT t2."TaskId", t2."TagId", t3."Id", t3."CreatedTime", t3."Description", t3."IsCompleted", t3."LastUpdateTime", t3."Title", t3."UserId"
+    FROM "TaskTagAssociations" AS t2
+    INNER JOIN "Tasks" AS t3 ON t2."TaskId" = t3."Id"
+) AS t1 ON t0."Id" = t1."TagId"
+ORDER BY t0."Id", t1."TaskId", t1."TagId"
+2024-09-20 07:46:38.063 +03:00 [WRN] Tag with ID 2412 not found
+2024-09-20 07:46:38.064 +03:00 [INF] Executed action method ToDoList.API.Controllers.TagsController.GetTagById (ToDoList.API), returned result Microsoft.AspNetCore.Mvc.NotFoundObjectResult in 233.5764ms.
+2024-09-20 07:46:38.067 +03:00 [INF] Executing NotFoundObjectResult, writing value of type 'System.String'.
+2024-09-20 07:46:38.069 +03:00 [INF] Executed action ToDoList.API.Controllers.TagsController.GetTagById (ToDoList.API) in 262.8189ms
+2024-09-20 07:46:38.071 +03:00 [INF] Executed endpoint 'ToDoList.API.Controllers.TagsController.GetTagById (ToDoList.API)'
+2024-09-20 07:46:38.072 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/api/Tags/2412 - 404 null text/plain; charset=utf-8 297.466ms
+2024-09-20 07:48:29.900 +03:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5153/api/Tags/132525 - null null
+2024-09-20 07:48:29.907 +03:00 [INF] CORS policy execution failed.
+2024-09-20 07:48:29.909 +03:00 [INF] Request origin http://localhost:5153 does not have permission to access the resource.
+2024-09-20 07:48:29.911 +03:00 [INF] Executing endpoint 'ToDoList.API.Controllers.TagsController.DeleteTag (ToDoList.API)'
+2024-09-20 07:48:29.916 +03:00 [INF] Route matched with {action = "DeleteTag", controller = "Tags"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DeleteTag(Int32) on controller ToDoList.API.Controllers.TagsController (ToDoList.API).
+2024-09-20 07:48:29.921 +03:00 [INF] Executing action method ToDoList.API.Controllers.TagsController.DeleteTag (ToDoList.API) - Validation state: "Valid"
+2024-09-20 07:48:29.925 +03:00 [INF] Deleting tag with ID 132525
+2024-09-20 07:48:29.975 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t0."Id", t0."Name", t1."TaskId", t1."TagId", t1."Id", t1."CreatedTime", t1."Description", t1."IsCompleted", t1."LastUpdateTime", t1."Title", t1."UserId"
+FROM (
+    SELECT t."Id", t."Name"
+    FROM "Tags" AS t
+    WHERE t."Id" = @__id_0
+    LIMIT 1
+) AS t0
+LEFT JOIN (
+    SELECT t2."TaskId", t2."TagId", t3."Id", t3."CreatedTime", t3."Description", t3."IsCompleted", t3."LastUpdateTime", t3."Title", t3."UserId"
+    FROM "TaskTagAssociations" AS t2
+    INNER JOIN "Tasks" AS t3 ON t2."TaskId" = t3."Id"
+) AS t1 ON t0."Id" = t1."TagId"
+ORDER BY t0."Id", t1."TaskId", t1."TagId"
+2024-09-20 07:48:29.980 +03:00 [WRN] Tag with ID 132525 not found for deletion
+2024-09-20 07:48:29.983 +03:00 [INF] Executed action method ToDoList.API.Controllers.TagsController.DeleteTag (ToDoList.API), returned result Microsoft.AspNetCore.Mvc.NotFoundObjectResult in 59.6251ms.
+2024-09-20 07:48:29.985 +03:00 [INF] Executing NotFoundObjectResult, writing value of type 'System.String'.
+2024-09-20 07:48:29.987 +03:00 [INF] Executed action ToDoList.API.Controllers.TagsController.DeleteTag (ToDoList.API) in 69.8917ms
+2024-09-20 07:48:29.989 +03:00 [INF] Executed endpoint 'ToDoList.API.Controllers.TagsController.DeleteTag (ToDoList.API)'
+2024-09-20 07:48:29.990 +03:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5153/api/Tags/132525 - 404 null text/plain; charset=utf-8 89.8183ms
+2024-09-20 07:48:39.664 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5153/api/Tasks - application/json 129
+2024-09-20 07:48:39.668 +03:00 [INF] CORS policy execution failed.
+2024-09-20 07:48:39.669 +03:00 [INF] Request origin http://localhost:5153 does not have permission to access the resource.
+2024-09-20 07:48:39.671 +03:00 [INF] Executing endpoint 'ToDoList.API.Controllers.TasksController.AddTask (ToDoList.API)'
+2024-09-20 07:48:39.686 +03:00 [INF] Route matched with {action = "AddTask", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[ToDoList.Application.DTOs.Task.TaskGetDto]] AddTask(ToDoList.Application.DTOs.Task.TaskCreateDto) on controller ToDoList.API.Controllers.TasksController (ToDoList.API).
+2024-09-20 07:48:39.773 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-09-20 07:48:39.800 +03:00 [INF] Executed action ToDoList.API.Controllers.TasksController.AddTask (ToDoList.API) in 111.2888ms
+2024-09-20 07:48:39.802 +03:00 [INF] Executed endpoint 'ToDoList.API.Controllers.TasksController.AddTask (ToDoList.API)'
+2024-09-20 07:48:39.803 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5153/api/Tasks - 400 null application/problem+json; charset=utf-8 139.6025ms
+2024-09-20 08:02:12.244 +03:00 [INF] Application is shutting down...
+2024-09-20 11:34:22.293 +03:00 [INF] Starting up the app
+2024-09-20 11:34:22.383 +03:00 [INF] Now listening on: http://localhost:5153
+2024-09-20 11:34:22.388 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-20 11:34:22.390 +03:00 [INF] Hosting environment: Development
+2024-09-20 11:34:22.391 +03:00 [INF] Content root path: C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API
+2024-09-20 11:34:22.700 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.html - null null
+2024-09-20 11:34:22.899 +03:00 [INF] HTTP GET /index.html responded 200 in 150.3937 ms
+2024-09-20 11:34:22.905 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.html - 200 null text/html;charset=utf-8 207.6749ms
+2024-09-20 11:34:22.974 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.js - null null
+2024-09-20 11:34:22.980 +03:00 [INF] HTTP GET /index.js responded 200 in 1.9106 ms
+2024-09-20 11:34:22.982 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.js - 200 null application/javascript;charset=utf-8 8.7745ms
+2024-09-20 11:34:24.504 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - null null
+2024-09-20 11:34:24.653 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 142.7695 ms
+2024-09-20 11:34:24.656 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 151.1894ms
+2024-09-20 11:36:00.006 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/api/Tasks - null null
+2024-09-20 11:36:00.018 +03:00 [INF] Executing endpoint 'ToDoList.API.Controllers.TasksController.GetAllTasks (ToDoList.API)'
+2024-09-20 11:36:00.042 +03:00 [INF] Route matched with {action = "GetAllTasks", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[ToDoList.Application.DTOs.Task.TaskGetDto]]] GetAllTasks() on controller ToDoList.API.Controllers.TasksController (ToDoList.API).
+2024-09-20 11:36:00.212 +03:00 [INF] Executing action method ToDoList.API.Controllers.TasksController.GetAllTasks (ToDoList.API) - Validation state: "Valid"
+2024-09-20 11:36:00.216 +03:00 [INF] Fetching all Tasks
+2024-09-20 11:36:01.810 +03:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."CreatedTime", t."Description", t."IsCompleted", t."LastUpdateTime", t."Title", t."UserId", t1."TaskId", t1."TagId", t1."Id", t1."Name"
+FROM "Tasks" AS t
+LEFT JOIN (
+    SELECT t0."TaskId", t0."TagId", t2."Id", t2."Name"
+    FROM "TaskTagAssociations" AS t0
+    INNER JOIN "Tags" AS t2 ON t0."TagId" = t2."Id"
+) AS t1 ON t."Id" = t1."TaskId"
+ORDER BY t."Id", t1."TaskId", t1."TagId"
+2024-09-20 11:36:02.002 +03:00 [INF] Fetched 1 tasks
+2024-09-20 11:36:02.014 +03:00 [INF] Executed action method ToDoList.API.Controllers.TasksController.GetAllTasks (ToDoList.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1795.6932ms.
+2024-09-20 11:36:02.026 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ToDoList.Application.DTOs.Task.TaskGetDto, ToDoList.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-20 11:36:02.088 +03:00 [INF] Executed action ToDoList.API.Controllers.TasksController.GetAllTasks (ToDoList.API) in 2038.9128ms
+2024-09-20 11:36:02.092 +03:00 [INF] Executed endpoint 'ToDoList.API.Controllers.TasksController.GetAllTasks (ToDoList.API)'
+2024-09-20 11:36:02.095 +03:00 [INF] HTTP GET /api/Tasks responded 200 in 2082.1662 ms
+2024-09-20 11:36:02.115 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/api/Tasks - 200 null application/json; charset=utf-8 2108.8367ms
+2024-09-20 11:40:06.625 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/favicon-32x32.png - null null
+2024-09-20 11:40:06.637 +03:00 [INF] CORS policy execution failed.
+2024-09-20 11:40:06.639 +03:00 [INF] Request origin chrome-extension://hddnkoipeenegfoeaoibdmnaalmgkpip does not have permission to access the resource.
+2024-09-20 11:40:06.657 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-09-20 11:40:06.660 +03:00 [INF] HTTP GET /favicon-32x32.png responded 200 in 17.4912 ms
+2024-09-20 11:40:06.662 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/favicon-32x32.png - 200 628 image/png 36.7642ms
+2024-09-20 11:40:06.771 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/favicon-32x32.png - null null
+2024-09-20 11:40:06.776 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-09-20 11:40:06.778 +03:00 [INF] HTTP GET /favicon-32x32.png responded 200 in 2.3829 ms
+2024-09-20 11:40:06.780 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/favicon-32x32.png - 200 628 image/png 9.0968ms
+2024-09-20 12:05:48.543 +03:00 [INF] Application is shutting down...

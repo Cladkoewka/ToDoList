@@ -2,6 +2,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using Serilog.Sinks.Elasticsearch;
 using ToDoList.Application.Services.Implementations;
 using ToDoList.Application.Services.Interfaces;
 using ToDoList.Application.Services.Mapping;
@@ -18,8 +19,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((context, services, configuration) => configuration
     .ReadFrom.Configuration(context.Configuration)
     .Enrich.FromLogContext()
+    .WriteTo.Seq("http://localhost:5341")
     .WriteTo.Console()
-    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day));
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
+    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
+    {
+        AutoRegisterTemplate = true,
+        IndexFormat = $"logs-myapp-{DateTime.UtcNow:yyyy.MM}",
+    }));
 
 
 var services = builder.Services;
@@ -73,6 +80,8 @@ app.UseRouting();
 app.UseCors(CorsName);
 app.UseAuthorization();
 
+app.UseSerilogRequestLogging();
+
 app.MapControllers();
 
 // Swagger
@@ -99,3 +108,6 @@ finally
 {
     Log.CloseAndFlush();
 }
+
+
+
