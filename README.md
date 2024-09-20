@@ -1,8 +1,8 @@
 # To-Do List API
 
-**To-Do List API** is a pet project designed to practice the principles of **Clean Architecture**. This API allows managing tasks (To-Do) with support for tags, users, and categories. The project is built using **ASP.NET Core 8** with **Entity Framework Core** for database interaction and **PostgreSQL** as the database. **Fluent Validation** is used for data validation.
+**To-Do List API** is a pet project designed to practice skills in software development, focusing on RESTful principles. This API allows managing tasks (To-Do) with support for tags, users, and categories. The project is built using **ASP.NET Core 8** with **Entity Framework Core** for database interaction and **PostgreSQL** as the database. **Fluent Validation** is used for data validation, and **Data Transfer Objects (DTOs)** are employed to streamline communication between the client and server. Additionally, **Serilog** is implemented for logging, including support for **Seq** and **Elasticsearch** for storing and analyzing logs.
 
-The project showcases key principles of separation of concerns, flexibility, and scalability, making it a great example of applying clean architecture in API development.
+The project demonstrates key principles of **Clean Architecture**, ensuring separation of concerns, flexibility, and scalability, making it a great example for honing development skills and applying best practices in API design.
 
 ## Technologies Used
 
@@ -10,7 +10,8 @@ The project showcases key principles of separation of concerns, flexibility, and
 - **Entity Framework Core**
 - **PostgreSQL**
 - **Fluent Validation**
-- **Clean Architecture**
+- **DTOs** for data transfer
+- **Serilog** for logging (including **Seq** and **Elasticsearch**)
 
 ## Endpoints
 
@@ -41,5 +42,6 @@ The project showcases key principles of separation of concerns, flexibility, and
 - **DELETE /api/users/{id}** — Deletes a user by their ID.
 
 ## Frontend Example
+
 ![Front](https://github.com/user-attachments/assets/e3828576-85ea-4f59-b40d-42cca9947d3c)
 
