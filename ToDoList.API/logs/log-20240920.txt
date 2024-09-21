@@ -145,3 +145,22 @@ ORDER BY t."Id", t1."TaskId", t1."TagId"
 2024-09-20 11:40:06.778 +03:00 [INF] HTTP GET /favicon-32x32.png responded 200 in 2.3829 ms
 2024-09-20 11:40:06.780 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/favicon-32x32.png - 200 628 image/png 9.0968ms
 2024-09-20 12:05:48.543 +03:00 [INF] Application is shutting down...
+2024-09-20 15:45:50.313 +03:00 [INF] Starting up the app
+2024-09-20 15:45:50.424 +03:00 [INF] Now listening on: http://localhost:5153
+2024-09-20 15:45:50.430 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-20 15:45:50.432 +03:00 [INF] Hosting environment: Development
+2024-09-20 15:45:50.433 +03:00 [INF] Content root path: C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API
+2024-09-20 15:45:50.553 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.html - null null
+2024-09-20 15:45:50.718 +03:00 [INF] HTTP GET /index.html responded 200 in 133.8375 ms
+2024-09-20 15:45:50.725 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.html - 200 null text/html;charset=utf-8 172.6708ms
+2024-09-20 15:45:50.814 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.js - null null
+2024-09-20 15:45:50.832 +03:00 [INF] HTTP GET /index.js responded 200 in 1.8091 ms
+2024-09-20 15:45:50.836 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.js - 200 null application/javascript;charset=utf-8 21.4743ms
+2024-09-20 15:45:52.281 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - null null
+2024-09-20 15:45:52.308 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/favicon-32x32.png - null null
+2024-09-20 15:45:52.321 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-09-20 15:45:52.323 +03:00 [INF] HTTP GET /favicon-32x32.png responded 200 in 11.7042 ms
+2024-09-20 15:45:52.325 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/favicon-32x32.png - 200 628 image/png 17.162ms
+2024-09-20 15:45:52.455 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 170.3973 ms
+2024-09-20 15:45:52.459 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 177.5507ms
+2024-09-20 15:46:46.945 +03:00 [INF] Application is shutting down...

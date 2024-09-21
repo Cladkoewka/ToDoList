@@ -1,0 +1,15 @@
+2024-09-21 13:20:21.168 +03:00 [INF] Starting up the app
+2024-09-21 13:20:21.282 +03:00 [INF] Now listening on: http://localhost:5153
+2024-09-21 13:20:21.288 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-21 13:20:21.289 +03:00 [INF] Hosting environment: Development
+2024-09-21 13:20:21.290 +03:00 [INF] Content root path: C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API
+2024-09-21 13:20:26.610 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.html - null null
+2024-09-21 13:20:26.924 +03:00 [INF] HTTP GET /index.html responded 200 in 265.6792 ms
+2024-09-21 13:20:26.933 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.html - 200 null text/html;charset=utf-8 325.1908ms
+2024-09-21 13:20:27.645 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.js - null null
+2024-09-21 13:20:27.658 +03:00 [INF] HTTP GET /index.js responded 200 in 6.3692 ms
+2024-09-21 13:20:27.665 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.js - 200 null application/javascript;charset=utf-8 20.6165ms
+2024-09-21 13:20:29.976 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - null null
+2024-09-21 13:20:30.254 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 272.3216 ms
+2024-09-21 13:20:30.258 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 282.3957ms
+2024-09-21 13:20:40.898 +03:00 [INF] Application is shutting down...
