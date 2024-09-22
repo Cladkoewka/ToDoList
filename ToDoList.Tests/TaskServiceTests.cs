@@ -1,4 +1,5 @@
 using Moq;
+using AutoFixture;
 using ToDoList.Application.DTOs.Task;
 using ToDoList.Application.Services.Implementations;
 using ToDoList.Application.Services.Mapping;
@@ -16,6 +17,7 @@ namespace ToDoList.Tests
         private readonly Mock<ITagRepository> _tagRepositoryMock;
         private readonly Mock<ITaskMapper> _taskMapperMock;
         private readonly TaskService _taskService;
+        private readonly Fixture _fixture;
 
         public TaskServiceTests()
         {
@@ -28,13 +30,16 @@ namespace ToDoList.Tests
                 _tagRepositoryMock.Object,
                 _taskMapperMock.Object
             );
+            _fixture = new Fixture(); 
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+
         }
 
         [Fact]
         public async Task GetTaskByIdAsync_ShouldReturnNull_WhenTaskNotFound()
         {
             // Arrange
-            int taskId = 1;
+            int taskId = _fixture.Create<int>();
             _taskRepositoryMock.Setup(repo => repo.GetByIdAsync(taskId))
                                .ReturnsAsync((Domain.Entities.Task?)null);
 
@@ -49,7 +54,7 @@ namespace ToDoList.Tests
         public async Task DeleteTaskAsync_ShouldReturnFalse_WhenTaskNotFound()
         {
             // Arrange
-            int taskId = 1;
+            int taskId = _fixture.Create<int>();
             _taskRepositoryMock.Setup(repo => repo.GetByIdAsync(taskId))
                                .ReturnsAsync((Domain.Entities.Task?)null);
 
@@ -64,16 +69,19 @@ namespace ToDoList.Tests
         public async Task CreateTaskAsync_ShouldReturnTask_WhenTaskCreated()
         {
             // Arrange
-            var taskCreateDto = new TaskCreateDto
-            {
-                Title = "New Task",
-                Description = "Test Description",
-                TagIds = new List<int> { 1, 2 }
-            };
+            var taskCreateDto = _fixture.Create<TaskCreateDto>();
 
             var tags = new List<Tag> { new Tag { Id = 1 }, new Tag { Id = 2 } };
-            var taskEntity = new Domain.Entities.Task { Id = 1, Title = "New Task", Description = "Test Description" };
-            var taskGetDto = new TaskGetDto { Id = 1, Title = "New Task", Description = "Test Description" };
+            var taskEntity = _fixture.Build<Domain.Entities.Task>()
+                                     .With(t => t.Id, 1)
+                                     .With(t => t.Title, taskCreateDto.Title)
+                                     .With(t => t.Description, taskCreateDto.Description)
+                                     .Create();
+            var taskGetDto = _fixture.Build<TaskGetDto>()
+                                      .With(t => t.Id, 1)
+                                      .With(t => t.Title, taskCreateDto.Title)
+                                      .With(t => t.Description, taskCreateDto.Description)
+                                      .Create();
 
             _tagRepositoryMock.Setup(repo => repo.GetTagsByIdsAsync(taskCreateDto.TagIds))
                               .ReturnsAsync(tags);
@@ -88,7 +96,7 @@ namespace ToDoList.Tests
 
             // Assert
             result.Should().NotBeNull();
-            result.Title.Should().Be("New Task");
+            result.Title.Should().Be(taskCreateDto.Title);
         }
 
         [Fact]
@@ -96,16 +104,19 @@ namespace ToDoList.Tests
         {
             // Arrange
             int taskId = 1;
-            var taskUpdateDto = new TaskUpdateDto
-            {
-                Title = "Updated Task",
-                Description = "Updated Description",
-                TagIds = new List<int> { 1, 2 }
-            };
+            var taskUpdateDto = _fixture.Create<TaskUpdateDto>();
 
-            var existingTask = new Domain.Entities.Task { Id = taskId, Title = "Old Task", Description = "Old Description" };
+            var existingTask = _fixture.Build<Domain.Entities.Task>()
+                                       .With(t => t.Id, taskId)
+                                       .With(t => t.Title, "Old Task")
+                                       .With(t => t.Description, "Old Description")
+                                       .Create();
             var tags = new List<Tag> { new Tag { Id = 1 }, new Tag { Id = 2 } };
-            var updatedTaskEntity = new Domain.Entities.Task { Id = taskId, Title = "Updated Task", Description = "Updated Description" };
+            var updatedTaskEntity = _fixture.Build<Domain.Entities.Task>()
+                                            .With(t => t.Id, taskId)
+                                            .With(t => t.Title, taskUpdateDto.Title)
+                                            .With(t => t.Description, taskUpdateDto.Description)
+                                            .Create();
 
             _taskRepositoryMock.Setup(repo => repo.GetByIdAsync(taskId))
                                .ReturnsAsync(existingTask);
@@ -128,12 +139,7 @@ namespace ToDoList.Tests
         {
             // Arrange
             int taskId = 1;
-            var taskUpdateDto = new TaskUpdateDto
-            {
-                Title = "Updated Task",
-                Description = "Updated Description",
-                TagIds = new List<int> { 1, 2 }
-            };
+            var taskUpdateDto = _fixture.Create<TaskUpdateDto>();
 
             _taskRepositoryMock.Setup(repo => repo.GetByIdAsync(taskId))
                                .ReturnsAsync((Domain.Entities.Task?)null);
@@ -149,11 +155,7 @@ namespace ToDoList.Tests
         public async Task GetAllTasksAsync_ShouldReturnAllTasks()
         {
             // Arrange
-            var taskList = new List<Domain.Entities.Task>
-            {
-                new Domain.Entities.Task { Id = 1, Title = "Task 1" },
-                new Domain.Entities.Task { Id = 2, Title = "Task 2" }
-            };
+            var taskList = _fixture.CreateMany<Domain.Entities.Task>(2).ToList();
 
             var taskGetDtoList = taskList.Select(task => new TaskGetDto { Id = task.Id, Title = task.Title }).ToList();
 

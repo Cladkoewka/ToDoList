@@ -1,3 +1,4 @@
+using AutoFixture;
 using Moq;
 using ToDoList.Application.DTOs.Tag;
 using ToDoList.Application.Services.Implementations;
@@ -15,23 +16,26 @@ public class TagServiceTests
     private readonly Mock<ITagRepository> _tagRepositoryMock;
     private readonly Mock<ITagMapper> _tagMapperMock;
     private readonly TagService _tagService;
+    private readonly Fixture _fixture;
 
     public TagServiceTests()
     {
         _tagRepositoryMock = new Mock<ITagRepository>();
         _tagMapperMock = new Mock<ITagMapper>();
-
         _tagService = new TagService(
             _tagRepositoryMock.Object,
             _tagMapperMock.Object
         );
+        _fixture = new Fixture(); 
+        _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+
     }
 
     [Fact]
     public async Task GetTagByIdAsync_ShouldReturnNull_WhenTagNotFound()
     {
         // Arrange
-        int tagId = 1;
+        int tagId = _fixture.Create<int>();
         _tagRepositoryMock.Setup(repo => repo.GetByIdAsync(tagId))
             .ReturnsAsync((Tag?)null);
         
@@ -46,14 +50,7 @@ public class TagServiceTests
     public async Task GetAllTagsAsync_ShouldReturnAllTags()
     {
         // Arrange
-        var tagList = new List<Tag>
-        {
-            new Tag { Id = 1, Name = "Tag 1" },
-            new Tag { Id = 2, Name = "Tag 2" }
-        };
-
-        var tagGetDtoList = tagList.Select(tag =>
-            new TagGetDto { Id = tag.Id, Name = tag.Name });
+        var tagList = _fixture.CreateMany<Tag>(2).ToList();
 
         _tagRepositoryMock.Setup(repo => repo.GetAllAsync())
             .ReturnsAsync(tagList);
@@ -65,21 +62,21 @@ public class TagServiceTests
 
         // Assert
         result.Should().NotBeNull()
-              .And.HaveCount(2);
+              .And.HaveCount(tagList.Count);
     }
     
     [Fact]
     public async Task CreateTagAsync_ShouldReturnTag_WhenTagCreated()
     {
         // Arrange
-        var tagCreateDto = new TagCreateDto
-        {
-            Name = "New Tag"
-        };
+        var tagCreateDto = _fixture.Create<TagCreateDto>();
 
         var existingTag = (Tag?)null; // No existing tag
-        var tagEntity = new Tag { Id = 1, Name = "New Tag" };
-        var tagGetDto = new TagGetDto { Id = 1, Name = "New Tag" };
+        var tagEntity = _fixture.Build<Tag>()
+                                .With(t => t.Id, 1)
+                                .With(t => t.Name, tagCreateDto.Name)
+                                .Create();
+        var tagGetDto = new TagGetDto { Id = 1, Name = tagEntity.Name };
 
         _tagRepositoryMock.Setup(repo => repo.GetByNameAsync(tagCreateDto.Name))
                           .ReturnsAsync(existingTag);
@@ -94,7 +91,7 @@ public class TagServiceTests
 
         // Assert
         result.Should().NotBeNull()
-              .And.Match<TagGetDto>(x => x.Name == "New Tag");
+              .And.Match<TagGetDto>(x => x.Name == tagCreateDto.Name);
     }
 
     [Fact]
