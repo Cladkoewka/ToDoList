@@ -35,7 +35,7 @@ public class TaskService : ITaskService
         return _taskMapper.MapToGetDto(task);
     }
 
-    public async Task<IEnumerable<TaskGetDto>> GetAllTasksAsynt()
+    public async Task<IEnumerable<TaskGetDto>> GetAllTasksAsync()
     {
         _logger.Information("Fetching all Tasks");
         var tasks = await _taskRepository.GetAllAsync();

@@ -28,7 +28,7 @@ public class TasksController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TaskGetDto>>> GetAllTasks()
     {
-        var tasks = await _taskService.GetAllTasksAsynt();
+        var tasks = await _taskService.GetAllTasksAsync();
         return Ok(tasks);
     }
     
