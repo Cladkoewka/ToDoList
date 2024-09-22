@@ -5,6 +5,7 @@ using ToDoList.Application.Services.Mapping;
 using ToDoList.Domain.Entities;
 using ToDoList.Domain.Interfaces;
 using Xunit;
+using FluentAssertions; 
 using Task = System.Threading.Tasks.Task;
 
 namespace ToDoList.Tests;
@@ -37,7 +38,8 @@ public class TagServiceTests
         // Act
         var result = await _tagService.GetTagByIdAsync(tagId);
         
-        Assert.Null(result);
+        // Assert
+        result.Should().BeNull();
     }
 
     [Fact]
@@ -61,8 +63,9 @@ public class TagServiceTests
         // Act
         var result = await _tagService.GetAllTagsAsync();
 
-        Assert.NotNull(result);
-        Assert.Equal(2, result.Count());
+        // Assert
+        result.Should().NotBeNull()
+              .And.HaveCount(2);
     }
     
     [Fact]
@@ -90,8 +93,8 @@ public class TagServiceTests
         var result = await _tagService.CreateTagAsync(tagCreateDto);
 
         // Assert
-        Assert.NotNull(result);
-        Assert.Equal("New Tag", result.Name);
+        result.Should().NotBeNull()
+              .And.Match<TagGetDto>(x => x.Name == "New Tag");
     }
 
     [Fact]
@@ -111,7 +114,7 @@ public class TagServiceTests
         var result = await _tagService.CreateTagAsync(tagCreateDto);
 
         // Assert
-        Assert.Null(result);
+        result.Should().BeNull();
     }
 
     [Fact]
@@ -137,7 +140,7 @@ public class TagServiceTests
         var result = await _tagService.UpdateTagAsync(tagId, tagUpdateDto);
 
         // Assert
-        Assert.True(result);
+        result.Should().BeTrue();
     }
 
     [Fact]
@@ -157,7 +160,7 @@ public class TagServiceTests
         var result = await _tagService.UpdateTagAsync(tagId, tagUpdateDto);
 
         // Assert
-        Assert.False(result);
+        result.Should().BeFalse();
     }
 
     [Fact]
@@ -176,7 +179,7 @@ public class TagServiceTests
         var result = await _tagService.DeleteTagAsync(tagId);
 
         // Assert
-        Assert.True(result);
+        result.Should().BeTrue();
     }
 
     [Fact]
@@ -191,6 +194,6 @@ public class TagServiceTests
         var result = await _tagService.DeleteTagAsync(tagId);
 
         // Assert
-        Assert.False(result);
+        result.Should().BeFalse();
     }
 }

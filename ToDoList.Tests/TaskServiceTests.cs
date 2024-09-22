@@ -5,6 +5,7 @@ using ToDoList.Application.Services.Mapping;
 using ToDoList.Domain.Entities;
 using ToDoList.Domain.Interfaces;
 using Xunit;
+using FluentAssertions;
 using Task = System.Threading.Tasks.Task;
 
 namespace ToDoList.Tests
@@ -41,7 +42,7 @@ namespace ToDoList.Tests
             var result = await _taskService.GetTaskByIdAsync(taskId);
 
             // Assert
-            Assert.Null(result);
+            result.Should().BeNull();
         }
 
         [Fact]
@@ -56,7 +57,7 @@ namespace ToDoList.Tests
             var result = await _taskService.DeleteTaskAsync(taskId);
 
             // Assert
-            Assert.False(result);
+            result.Should().BeFalse();
         }
         
         [Fact]
@@ -86,8 +87,8 @@ namespace ToDoList.Tests
             var result = await _taskService.CreateTaskAsync(taskCreateDto);
 
             // Assert
-            Assert.NotNull(result);
-            Assert.Equal("New Task", result.Title);
+            result.Should().NotBeNull();
+            result.Title.Should().Be("New Task");
         }
 
         [Fact]
@@ -119,7 +120,7 @@ namespace ToDoList.Tests
             var result = await _taskService.UpdateTaskAsync(taskId, taskUpdateDto);
 
             // Assert
-            Assert.True(result);
+            result.Should().BeTrue();
         }
 
         [Fact]
@@ -141,7 +142,7 @@ namespace ToDoList.Tests
             var result = await _taskService.UpdateTaskAsync(taskId, taskUpdateDto);
 
             // Assert
-            Assert.False(result);
+            result.Should().BeFalse();
         }
 
         [Fact]
@@ -165,11 +166,8 @@ namespace ToDoList.Tests
             var result = await _taskService.GetAllTasksAsync();
 
             // Assert
-            Assert.NotNull(result);
-            Assert.Equal(2, result.Count());
+            result.Should().NotBeNull();
+            result.Count().Should().Be(2);
         }
-        
     }
 }
-
-
