@@ -818,6 +818,7 @@
       },
       "ToDoList.Domain/1.0.0": {
         "dependencies": {
+          "FluentValidation": "11.10.0",
           "Serilog.AspNetCore": "8.0.2",
           "Serilog.Sinks.Console": "6.0.0",
           "Serilog.Sinks.File": "6.0.0"
@@ -828,6 +829,7 @@
       },
       "ToDoList.Infrastructure/1.0.0": {
         "dependencies": {
+          "FluentValidation": "11.10.0",
           "Microsoft.EntityFrameworkCore": "8.0.8",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4",
           "Serilog.AspNetCore": "8.0.2",
