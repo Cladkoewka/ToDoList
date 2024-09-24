@@ -22,8 +22,22 @@ public class UsersController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<UserGetDto>>> GetAllUsers()
     {
-        var users = await _userService.GetAllUsersAsync();
-        return Ok(users);
+        try
+        {
+            var users = await _userService.GetAllUsersAsync();
+            return Ok(users);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "An error occurred while getting users.");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+    
+    [HttpGet("test")]
+    public async Task<ActionResult<string>> Test()
+    {
+        return Ok("Hello World");
     }
 
     [HttpGet("{id:int}")]
