@@ -1,3 +1,5 @@
 .logs
 .ToDoList.API/logs/
 .idea/
+*.DotSettings.user
+
