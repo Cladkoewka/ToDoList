@@ -1,0 +1,38 @@
+﻿networks:
+  dev:
+    driver: bridge
+
+services:
+  todolist.api:
+    image: todolist.api
+    depends_on: 
+      - "db"
+    build:
+      context: .
+      dockerfile: ToDoList.API/Dockerfile
+    container_name: to-do-list-api
+    ports:
+      - "8080:80"
+    environment:
+      - ConnectionStrings__DefaultConnection=User ID=postgres;Password=1339;Server=db;Port=5432;Database=postgres;
+      - ASPNETCORE_URLS=http://+:80
+    networks: 
+      - dev
+  db:
+    image: postgres
+    container_name: database
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1339
+      - POSTGRES_DB=postgres
+    ports:
+      - "5433:5432"
+    restart: always
+    volumes:
+      - app_data:/var/lib/postgresql/data
+    networks: 
+      - dev
+        
+volumes: 
+  app_data:
+    

@@ -6,10 +6,7 @@ namespace ToDoList.Infrastructure.DbContext;
 
 public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-    {
-        Database.Migrate();
-    }
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
     public DbSet<Task> Tasks { get; set; }
     public DbSet<User> Users { get; set; }

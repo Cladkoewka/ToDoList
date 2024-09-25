@@ -20,15 +20,6 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
     .Enrich.FromLogContext()
     .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
     .WriteTo.Console());
-    
-    /*
-     .WriteTo.Seq("http://localhost:5341")
-    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
-    {
-        AutoRegisterTemplate = true,
-        IndexFormat = $"logs-myapp-{DateTime.UtcNow:yyyy.MM}",
-    }));
-    */
 
 
 
@@ -67,25 +58,9 @@ services.AddFluentValidation()
     .AddValidatorsFromAssembly(typeof(UserCreateDtoValidator).Assembly);
 
 
-// Add CORS
-/*
-const string CorsName = "AllowFrontend";
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(CorsName,
-        policy =>
-        {
-            policy.WithOrigins("http://127.0.0.1:5500") // Frontend Port
-                .AllowAnyHeader()
-                .AllowAnyMethod();
-        });
-});
-*/
-
 var app = builder.Build();
 
 app.UseRouting();
-//app.UseCors(CorsName);
 app.UseAuthorization();
 
 app.UseSerilogRequestLogging();
@@ -106,7 +81,3 @@ if (app.Environment.IsDevelopment())
 Log.Information("Starting up the app");
 app.Run();
 
-
-
-// docker build -t my-api-image -f ToDoList.API/Dockerfile .
-// docker run -it --entrypoint /bin/bash my-api-image
