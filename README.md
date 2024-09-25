@@ -2,6 +2,8 @@
 
 **To-Do List API** is a pet project designed to practice skills in software development, focusing on RESTful principles. This API allows managing tasks (To-Do) with support for tags, users, and categories. The project is built using **ASP.NET Core 8** with **Entity Framework Core** for database interaction and **PostgreSQL** as the database. **Fluent Validation** is used for data validation, and **Data Transfer Objects (DTOs)** are employed to streamline communication between the client and server. Additionally, **Serilog** is implemented for logging, including support for **Seq** and **Elasticsearch** for storing and analyzing logs.
 
+The project now also utilizes **xUnit** for unit testing, **Moq** for mocking dependencies, **FluentAssertions** for more readable assertions in tests, and **AutoFixture** for automated test data generation. Additionally, Docker is used to run the API in a container alongside PostgreSQL, providing an efficient development and deployment environment. The image for the API is available on Docker Hub as `cladkoewka/todolist.api:latest`.
+
 The project demonstrates key principles of **Clean Architecture**, ensuring separation of concerns, flexibility, and scalability, making it a great example for honing development skills and applying best practices in API design.
 
 ## Technologies Used
@@ -12,6 +14,8 @@ The project demonstrates key principles of **Clean Architecture**, ensuring sepa
 - **Fluent Validation**
 - **DTOs** for data transfer
 - **Serilog** for logging (including **Seq** and **Elasticsearch**)
+- **xUnit** for unit testing (with **Moq**, **FluentAssertions** and **AutoFixture**)
+- **Docker** for containerization
 
 ## Endpoints
 
@@ -44,4 +48,3 @@ The project demonstrates key principles of **Clean Architecture**, ensuring sepa
 ## Frontend Example
 
 ![Front](https://github.com/user-attachments/assets/e3828576-85ea-4f59-b40d-42cca9947d3c)
-
