@@ -47,8 +47,8 @@ public class TagService : ITagService
         var existingTag = await _tagRepository.GetByNameAsync(tagDto.Name);
         if (existingTag != null)
         {
-            _logger.Warning("Tag with name {TagName} already exists", tagDto.Name);
-            return null;
+            _logger.Information("Tag with name {TagName} already exists", tagDto.Name);
+            return _tagMapper.MapToGetDto(existingTag);
         }
         
         var tag = _tagMapper.MapToEntity(tagDto);

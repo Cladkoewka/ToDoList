@@ -31,7 +31,16 @@ var configuration = builder.Configuration;
 services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
-
+const string policyName = "AllowAllOrigins";
+services.AddCors(options =>
+{
+    options.AddPolicy(policyName, builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 
 
 // Add repositories
@@ -61,6 +70,9 @@ services.AddFluentValidation()
 var app = builder.Build();
 
 app.UseRouting();
+
+app.UseCors(policyName);
+
 app.UseAuthorization();
 
 app.UseSerilogRequestLogging();

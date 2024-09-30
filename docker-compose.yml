@@ -14,7 +14,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      - ConnectionStrings__DefaultConnection=User ID=postgres;Password=1339;Server=db;Port=5432;Database=postgres;
+      - ConnectionStrings__DefaultConnection=User ID=postgres;Password=1339;Port=5432;Database=to-do;Server=db;
       - ASPNETCORE_URLS=http://+:80
     networks: 
       - dev
@@ -24,7 +24,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1339
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=to-do
     ports:
       - "5433:5432"
     restart: always
