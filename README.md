@@ -45,6 +45,46 @@ The project demonstrates key principles of **Clean Architecture**, ensuring sepa
 - **PUT /api/users/{id}** — Updates an existing user.
 - **DELETE /api/users/{id}** — Deletes a user by their ID.
 
+
+## Deployment Instructions
+
+### Prerequisites
+- [Docker](https://www.docker.com/get-started)
+
+### Deployment Using Docker
+
+1. **Pull the API Image from Docker Hub**
+
+   Run the following command to download API image:
+
+   ```bash
+   docker pull cladkoewka/todolist.api:latest
+   ```
+
+2. **Create the `docker-compose.yml`**
+
+   You can copy the `docker-compose.yml` file from the current repository to your local machine. Make sure to adjust any necessary configuration settings in the file.
+
+3. **Start the Containers**
+
+   In the directory where your `docker-compose.yml` is located, run the following command to start the containers:
+
+   ```bash
+   docker-compose up
+   ```
+
+   This command will start the containers for the API and PostgreSQL.
+
+4. **Check the API**
+
+   Once the containers are running, the API will be accessible at:
+
+   ```
+   http://localhost:8080/api
+   ```
+
+   You can test the API endpoints using tools like [Postman](https://www.postman.com/).
+
 ## Frontend Example
 
 ![Front](https://github.com/user-attachments/assets/e3828576-85ea-4f59-b40d-42cca9947d3c)
