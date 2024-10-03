@@ -1,0 +1,120 @@
+2024-10-02 21:14:00.263 +03:00 [INF] Starting up the app
+2024-10-02 21:14:00.369 +03:00 [INF] Now listening on: http://localhost:5153
+2024-10-02 21:14:00.375 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-02 21:14:00.376 +03:00 [INF] Hosting environment: Development
+2024-10-02 21:14:00.377 +03:00 [INF] Content root path: C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API
+2024-10-02 21:14:01.097 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/ - null null
+2024-10-02 21:14:01.155 +03:00 [INF] HTTP GET / responded 301 in 20.2932 ms
+2024-10-02 21:14:01.164 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/ - 301 0 null 69.2752ms
+2024-10-02 21:14:01.173 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.html - null null
+2024-10-02 21:14:01.286 +03:00 [INF] HTTP GET /index.html responded 200 in 110.0930 ms
+2024-10-02 21:14:01.290 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.html - 200 null text/html;charset=utf-8 116.8641ms
+2024-10-02 21:14:01.337 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger-ui.css - null null
+2024-10-02 21:14:01.343 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.css - null null
+2024-10-02 21:14:01.346 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger-ui-bundle.js - null null
+2024-10-02 21:14:01.346 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger-ui-standalone-preset.js - null null
+2024-10-02 21:14:01.346 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.js - null null
+2024-10-02 21:14:01.355 +03:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2024-10-02 21:14:01.357 +03:00 [INF] HTTP GET /index.js responded 200 in 0.6240 ms
+2024-10-02 21:14:01.358 +03:00 [INF] HTTP GET /index.css responded 200 in 11.6598 ms
+2024-10-02 21:14:01.361 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.js - 200 null application/javascript;charset=utf-8 14.7116ms
+2024-10-02 21:14:01.363 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.css - 200 202 text/css 20.0361ms
+2024-10-02 21:14:01.368 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-10-02 21:14:01.368 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-10-02 21:14:01.376 +03:00 [INF] HTTP GET /swagger-ui.css responded 200 in 34.3298 ms
+2024-10-02 21:14:01.376 +03:00 [INF] HTTP GET /swagger-ui-standalone-preset.js responded 200 in 23.8199 ms
+2024-10-02 21:14:01.381 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger-ui.css - 200 152034 text/css 43.4442ms
+2024-10-02 21:14:01.381 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger-ui-standalone-preset.js - 200 230293 text/javascript 35.2732ms
+2024-10-02 21:14:01.385 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-10-02 21:14:01.390 +03:00 [INF] HTTP GET /swagger-ui-bundle.js responded 200 in 40.6488 ms
+2024-10-02 21:14:01.392 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger-ui-bundle.js - 200 1452753 text/javascript 46.6058ms
+2024-10-02 21:14:02.964 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - null null
+2024-10-02 21:14:03.066 +03:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 98.3763 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Tasks" for actions - ToDoList.API.Controllers.TasksController.GetAllTasks (ToDoList.API),ToDoList.API.Controllers.TasksController.GetPaginatedTasks (ToDoList.API). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2024-10-02 21:14:03.080 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Tasks" for actions - ToDoList.API.Controllers.TasksController.GetAllTasks (ToDoList.API),ToDoList.API.Controllers.TasksController.GetPaginatedTasks (ToDoList.API). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-10-02 21:14:03.089 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 125.118ms
+2024-10-02 21:14:56.590 +03:00 [INF] Application is shutting down...
+2024-10-02 21:15:39.016 +03:00 [INF] Starting up the app
+2024-10-02 21:15:39.091 +03:00 [INF] Now listening on: http://localhost:5153
+2024-10-02 21:15:39.095 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-02 21:15:39.096 +03:00 [INF] Hosting environment: Development
+2024-10-02 21:15:39.097 +03:00 [INF] Content root path: C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API
+2024-10-02 21:16:39.511 +03:00 [INF] Application is shutting down...
+2024-10-02 21:16:41.767 +03:00 [INF] Starting up the app
+2024-10-02 21:16:41.855 +03:00 [INF] Now listening on: http://localhost:5153
+2024-10-02 21:16:41.860 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-02 21:16:41.861 +03:00 [INF] Hosting environment: Development
+2024-10-02 21:16:41.862 +03:00 [INF] Content root path: C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API
+2024-10-02 21:16:42.056 +03:00 [INF] Application is shutting down...
+2024-10-02 21:16:47.005 +03:00 [INF] Starting up the app
+2024-10-02 21:16:47.086 +03:00 [INF] Now listening on: http://localhost:5153
+2024-10-02 21:16:47.092 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-02 21:16:47.093 +03:00 [INF] Hosting environment: Development
+2024-10-02 21:16:47.094 +03:00 [INF] Content root path: C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API
+2024-10-02 21:16:47.718 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.html - null null
+2024-10-02 21:16:47.900 +03:00 [INF] HTTP GET /index.html responded 200 in 144.8184 ms
+2024-10-02 21:16:47.905 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.html - 200 null text/html;charset=utf-8 189.1967ms
+2024-10-02 21:16:47.958 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.js - null null
+2024-10-02 21:16:47.963 +03:00 [INF] HTTP GET /index.js responded 200 in 1.2260 ms
+2024-10-02 21:16:47.966 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.js - 200 null application/javascript;charset=utf-8 7.6962ms
+2024-10-02 21:16:49.433 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - null null
+2024-10-02 21:16:49.520 +03:00 [ERR] HTTP GET /swagger/v1/swagger.json responded 500 in 82.7288 ms
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Tasks" for actions - ToDoList.API.Controllers.TasksController.GetAllTasks (ToDoList.API),ToDoList.API.Controllers.TasksController.GetPaginatedTasks (ToDoList.API). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2024-10-02 21:16:49.533 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Tasks" for actions - ToDoList.API.Controllers.TasksController.GetAllTasks (ToDoList.API),ToDoList.API.Controllers.TasksController.GetPaginatedTasks (ToDoList.API). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-10-02 21:16:49.543 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 110.0903ms
+2024-10-02 21:18:25.560 +03:00 [INF] Application is shutting down...
+2024-10-02 21:18:31.288 +03:00 [INF] Starting up the app
+2024-10-02 21:18:31.368 +03:00 [INF] Now listening on: http://localhost:5153
+2024-10-02 21:18:31.374 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-02 21:18:31.375 +03:00 [INF] Hosting environment: Development
+2024-10-02 21:18:31.376 +03:00 [INF] Content root path: C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API
+2024-10-02 21:18:31.956 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.html - null null
+2024-10-02 21:18:32.145 +03:00 [INF] HTTP GET /index.html responded 200 in 140.6178 ms
+2024-10-02 21:18:32.151 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.html - 200 null text/html;charset=utf-8 197.2675ms
+2024-10-02 21:18:32.206 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/index.js - null null
+2024-10-02 21:18:32.212 +03:00 [INF] HTTP GET /index.js responded 200 in 1.2971 ms
+2024-10-02 21:18:32.215 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/index.js - 200 null application/javascript;charset=utf-8 8.1694ms
+2024-10-02 21:18:33.584 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - null null
+2024-10-02 21:18:33.728 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 139.4857 ms
+2024-10-02 21:18:33.731 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5153/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 146.1811ms
+2024-10-02 21:30:35.221 +03:00 [INF] Application is shutting down...

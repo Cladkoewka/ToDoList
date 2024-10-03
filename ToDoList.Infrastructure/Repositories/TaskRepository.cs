@@ -29,6 +29,19 @@ public class TaskRepository : ITaskRepository
             .ThenInclude(association => association.Tag)
             .ToListAsync();
     }
+    
+    public async Task<int> GetTaskCount() => 
+        await _context.Tasks.CountAsync();
+
+    public async Task<IEnumerable<Task>> GetPaginatedTasksAsync(int pageNumber, int pageSize)
+    {
+        return await _context.Tasks
+            .Include(task => task.TaskTagAssociations)
+            .ThenInclude(association => association.Tag) 
+            .Skip((pageNumber - 1) * pageSize) 
+            .Take(pageSize) 
+            .ToListAsync();
+    }
 
     public async Task<IEnumerable<Task>> GetByTagsAsync(IEnumerable<int> tagIds)
     {

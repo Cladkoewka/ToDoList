@@ -43,6 +43,19 @@ public class TaskService : ITaskService
         return tasks.Select(_taskMapper.MapToGetDto).ToList();
     }
     
+    public async Task<PaginatedResult<TaskGetDto>> GetPaginatedTasksAsync(int pageNumber, int pageSize)
+    {
+        _logger.Information("Fetching paginated Tasks");
+        var allTasksCount = await _taskRepository.GetTaskCount();
+        var tasks = await _taskRepository.GetPaginatedTasksAsync(pageNumber, pageSize);
+        _logger.Information("Fetched {TaskCount} tasks", tasks.Count());
+        return new PaginatedResult<TaskGetDto>()
+        {
+            Tasks = tasks.Select(_taskMapper.MapToGetDto).ToList(),
+            TotalCount = allTasksCount
+        };
+    }
+    
     public async Task<IEnumerable<TaskGetDto>> GetTasksByTagsAsync(IEnumerable<int> tagIds)
     {
         _logger.Information("Fetching tasks for tags: {TagIds}", string.Join(", ", tagIds));
