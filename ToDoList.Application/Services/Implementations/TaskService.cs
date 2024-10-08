@@ -56,6 +56,32 @@ public class TaskService : ITaskService
         };
     }
     
+    public async Task<PaginatedResult<TaskGetDto>> GetFilteredTasksAsync(int pageNumber, int pageSize, bool showCompleted)
+    {
+        _logger.Information("Fetching filtered Tasks");
+        if (showCompleted)
+        {
+            var allTasksCount = await _taskRepository.GetTaskCount();
+            var tasks = await _taskRepository.GetPaginatedTasksAsync(pageNumber, pageSize);
+            _logger.Information("Fetched {TaskCount} tasks", tasks.Count());
+            return new PaginatedResult<TaskGetDto>()
+            {
+                Tasks = tasks.Select(_taskMapper.MapToGetDto).ToList(),
+                TotalCount = allTasksCount
+            };
+        }
+        else
+        {
+            var notCompletedTasksCount = await _taskRepository.GetTaskCount(false);
+            var tasks = await _taskRepository.GetPaginatedTasksAsync(pageNumber, pageSize, false);
+            return new PaginatedResult<TaskGetDto>()
+            {
+                Tasks = tasks.Select(_taskMapper.MapToGetDto).ToList(),
+                TotalCount = notCompletedTasksCount
+            };
+        }
+    }
+    
     public async Task<IEnumerable<TaskGetDto>> GetTasksByTagsAsync(IEnumerable<int> tagIds)
     {
         _logger.Information("Fetching tasks for tags: {TagIds}", string.Join(", ", tagIds));

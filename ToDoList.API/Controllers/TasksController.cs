@@ -44,6 +44,19 @@ public class TasksController : ControllerBase
         return Ok(paginatedTasks);
     }
     
+    [HttpGet("filtered")]
+    public async Task<ActionResult<PaginatedResult<TaskGetDto>>> GetPaginatedTasks(
+        [FromQuery] int pageNumber, [FromQuery] int pageSize, [FromQuery] bool showCompleted)
+    {
+        if (pageNumber <= 0 || pageSize <= 0)
+        {
+            return BadRequest("Page number and page size must be greater than 0.");
+        }
+
+        var paginatedTasks = await _taskService.GetFilteredTasksAsync(pageNumber, pageSize, showCompleted);
+        return Ok(paginatedTasks);
+    }
+    
     [HttpGet("by-tags")]
     public async Task<ActionResult<IEnumerable<TaskGetDto>>> GetTasksByTags([FromQuery] IEnumerable<int> tagIds)
     {
