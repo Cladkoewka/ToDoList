@@ -39,6 +39,7 @@ public class TaskRepository : ITaskRepository
     public async Task<IEnumerable<Task>> GetPaginatedTasksAsync(int pageNumber, int pageSize)
     {
         return await _context.Tasks
+            .OrderByDescending(t => t.LastUpdateTime)
             .Include(task => task.TaskTagAssociations)
             .ThenInclude(association => association.Tag) 
             .Skip((pageNumber - 1) * pageSize) 
@@ -49,12 +50,12 @@ public class TaskRepository : ITaskRepository
     public async Task<IEnumerable<Task>> GetPaginatedTasksAsync(int pageNumber, int pageSize, bool isCompleted)
     {
         return await _context.Tasks
+            .OrderByDescending(t => t.LastUpdateTime)
             .Where(t => t.IsCompleted == isCompleted)
             .Include(task => task.TaskTagAssociations)
             .ThenInclude(association => association.Tag) 
             .Skip((pageNumber - 1) * pageSize) 
             .Take(pageSize) 
-            .OrderBy(t => t.LastUpdateTime)
             .ToListAsync();
     }
 
