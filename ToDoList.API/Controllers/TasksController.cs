@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using ToDoList.Application.DTOs.Task;
@@ -19,16 +20,29 @@ public class TasksController : ControllerBase
         _logger = Log.ForContext<TasksController>();
     }
 
-    [HttpGet("test")]
-    public async Task<ActionResult> TestMethod()
+    private int GetCurrentUserId()
     {
-        return Ok("test string");
+        if (!Request.Headers.TryGetValue("Token", out var authToken))
+        {
+            throw new InvalidOperationException("Auth token is not present in the headers.");
+        }
+
+        var handler = new JwtSecurityTokenHandler();
+        var token = handler.ReadJwtToken(authToken);
+        var userIdClaim = token.Claims.FirstOrDefault(c => c.Type == "nameid");
+
+        if (userIdClaim == null)
+        {
+            throw new InvalidOperationException("User ID claim is not present in the token.");
+        }
+
+        return int.Parse(userIdClaim.Value);
     }
-    
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TaskGetDto>>> GetAllTasks()
     {
-        var tasks = await _taskService.GetAllTasksAsync();
+        var tasks = await _taskService.GetAllTasksAsync(GetCurrentUserId());
         return Ok(tasks);
     }
     
@@ -40,7 +54,8 @@ public class TasksController : ControllerBase
             return BadRequest("Page number and page size must be greater than 0.");
         }
 
-        var paginatedTasks = await _taskService.GetPaginatedTasksAsync(pageNumber, pageSize);
+        var paginatedTasks = await _taskService.GetPaginatedTasksAsync(pageNumber,
+            pageSize, GetCurrentUserId());
         return Ok(paginatedTasks);
     }
     
@@ -53,7 +68,8 @@ public class TasksController : ControllerBase
             return BadRequest("Page number and page size must be greater than 0.");
         }
 
-        var paginatedTasks = await _taskService.GetFilteredTasksAsync(pageNumber, pageSize, showCompleted);
+        var paginatedTasks = await _taskService.GetFilteredTasksAsync(pageNumber,
+            pageSize, showCompleted, GetCurrentUserId());
         return Ok(paginatedTasks);
     }
     
@@ -67,7 +83,7 @@ public class TasksController : ControllerBase
     [HttpGet("{id:int}")]
     public async Task<ActionResult<TaskGetDto>> GetTaskById(int id)
     {
-        var task = await _taskService.GetTaskByIdAsync(id);
+        var task = await _taskService.GetTaskByIdAsync(id, GetCurrentUserId());
         if (task == null)
             return NotFound($"Task with ID {id} not found");
 
@@ -83,7 +99,7 @@ public class TasksController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var createdTask = await _taskService.CreateTaskAsync(taskDto);
+        var createdTask = await _taskService.CreateTaskAsync(taskDto, GetCurrentUserId());
 
         if (createdTask == null)
             return BadRequest("Task could not be created.");
@@ -100,7 +116,7 @@ public class TasksController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var success = await _taskService.UpdateTaskAsync(id, taskDto);
+        var success = await _taskService.UpdateTaskAsync(id, taskDto, GetCurrentUserId());
         if (!success)
             return NotFound($"Task with ID {id} not found.");
 
@@ -110,7 +126,7 @@ public class TasksController : ControllerBase
     [HttpDelete("{id:int}")]
     public async Task<ActionResult> DeleteTask(int id)
     {
-        var success = await _taskService.DeleteTaskAsync(id);
+        var success = await _taskService.DeleteTaskAsync(id, GetCurrentUserId());
         if (!success)
             return NotFound($"Task with ID {id} not found.");
 

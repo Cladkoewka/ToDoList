@@ -1,3 +1,4 @@
+using System.Text;
 using Serilog;
 using ToDoList.Application.DTOs.User;
 using ToDoList.Application.Services.Interfaces;
@@ -101,5 +102,11 @@ public class UserService : IUserService
         await _userRepository.DeleteAsync(existingUser);
         _logger.Information("User with ID {UserId} deleted successfully", id);
         return true;
+    }
+    
+    private string HashPassword(string password)
+    {
+        // use hash algorithm
+        return Convert.ToBase64String(Encoding.UTF8.GetBytes(password)); 
     }
 }

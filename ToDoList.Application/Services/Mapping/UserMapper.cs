@@ -1,3 +1,4 @@
+using System.Text;
 using ToDoList.Application.DTOs.User;
 using ToDoList.Domain.Entities;
 
@@ -11,7 +12,8 @@ public class UserMapper : IUserMapper
         {
             Id = user.Id,
             Username = user.Username,
-            Email = user.Email
+            Email = user.Email,
+            PasswordHash = user.PasswordHash
         };
     }
 
@@ -19,21 +21,27 @@ public class UserMapper : IUserMapper
     {
         return new User
         {
-            Username = userCreateDto.Username,
             Email = userCreateDto.Email,
-            PasswordHash = userCreateDto.PasswordHash
+            Username = userCreateDto.Username,
+            PasswordHash = HashPassword(userCreateDto.Password)
         };
     }
 
     public User MapToEntity(UserUpdateDto userUpdateDto, User user)
     {
-        user.Username = userUpdateDto.Username;
         user.Email = userUpdateDto.Email;
-        if (!string.IsNullOrEmpty(userUpdateDto.PasswordHash))
+        user.Username = userUpdateDto.Username;
+        if (!string.IsNullOrEmpty(userUpdateDto.Password))
         {
-            user.PasswordHash = userUpdateDto.PasswordHash;
+            user.PasswordHash = HashPassword(userUpdateDto.Password);
         }
 
         return user;
+    }
+    
+    private string HashPassword(string password)
+    {
+        // use hash algorithm
+        return Convert.ToBase64String(Encoding.UTF8.GetBytes(password)); 
     }
 }

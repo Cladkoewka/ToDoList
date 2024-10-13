@@ -128,3 +128,12 @@ C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\obj\Debug\net8.0\refint\To
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\obj\Debug\net8.0\ToDoList.API.pdb
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\obj\Debug\net8.0\ToDoList.API.genruntimeconfig.cache
 C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\obj\Debug\net8.0\ref\ToDoList.API.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\ITProjects\.Net\!PetProjects\ToDoList\ToDoList.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

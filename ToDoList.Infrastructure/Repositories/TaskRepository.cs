@@ -30,32 +30,50 @@ public class TaskRepository : ITaskRepository
             .ToListAsync();
     }
     
-    public async Task<int> GetTaskCount() => 
-        await _context.Tasks.CountAsync();
-    
-    public async Task<int> GetTaskCount(bool isCompleted) => 
-        await _context.Tasks.Where(t => t.IsCompleted == isCompleted).CountAsync();
-
-    public async Task<IEnumerable<Task>> GetPaginatedTasksAsync(int pageNumber, int pageSize)
+    public async Task<IEnumerable<Task>> GetAllByUserIdAsync(int userId)
     {
         return await _context.Tasks
-            .OrderByDescending(t => t.LastUpdateTime)
+            .Where(task => task.UserId == userId)
             .Include(task => task.TaskTagAssociations)
-            .ThenInclude(association => association.Tag) 
-            .Skip((pageNumber - 1) * pageSize) 
-            .Take(pageSize) 
+            .ThenInclude(association => association.Tag)
             .ToListAsync();
     }
     
-    public async Task<IEnumerable<Task>> GetPaginatedTasksAsync(int pageNumber, int pageSize, bool isCompleted)
+    public async Task<int> GetTaskCount(int userId)
     {
         return await _context.Tasks
-            .OrderByDescending(t => t.LastUpdateTime)
-            .Where(t => t.IsCompleted == isCompleted)
+            .Where(task => task.UserId == userId)
+            .CountAsync();
+    }
+
+    public async Task<int> GetTaskCount(bool isCompleted, int userId)
+    {
+        return await _context.Tasks
+            .Where(task => task.UserId == userId && task.IsCompleted == isCompleted)
+            .CountAsync();
+    }
+
+    public async Task<IEnumerable<Task>> GetPaginatedTasksAsync(int pageNumber, int pageSize, int userId)
+    {
+        return await _context.Tasks
+            .Where(task => task.UserId == userId)
+            .OrderByDescending(task => task.LastUpdateTime)
             .Include(task => task.TaskTagAssociations)
-            .ThenInclude(association => association.Tag) 
-            .Skip((pageNumber - 1) * pageSize) 
-            .Take(pageSize) 
+            .ThenInclude(association => association.Tag)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<Task>> GetPaginatedTasksAsync(int pageNumber, int pageSize, bool isCompleted, int userId)
+    {
+        return await _context.Tasks
+            .Where(task => task.UserId == userId && task.IsCompleted == isCompleted)
+            .OrderByDescending(task => task.LastUpdateTime)
+            .Include(task => task.TaskTagAssociations)
+            .ThenInclude(association => association.Tag)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
             .ToListAsync();
     }
 

@@ -44,7 +44,7 @@ namespace ToDoList.Tests
                                .ReturnsAsync((Domain.Entities.Task?)null);
 
             // Act
-            var result = await _taskService.GetTaskByIdAsync(taskId);
+            var result = await _taskService.GetTaskByIdAsync(taskId, 1);
 
             // Assert
             result.Should().BeNull();
@@ -59,7 +59,7 @@ namespace ToDoList.Tests
                                .ReturnsAsync((Domain.Entities.Task?)null);
 
             // Act
-            var result = await _taskService.DeleteTaskAsync(taskId);
+            var result = await _taskService.DeleteTaskAsync(taskId, 1);
 
             // Assert
             result.Should().BeFalse();
@@ -92,7 +92,7 @@ namespace ToDoList.Tests
                            .Returns(taskGetDto);
 
             // Act
-            var result = await _taskService.CreateTaskAsync(taskCreateDto);
+            var result = await _taskService.CreateTaskAsync(taskCreateDto, 1);
 
             // Assert
             result.Should().NotBeNull();
@@ -128,7 +128,7 @@ namespace ToDoList.Tests
                                .Returns(Task.CompletedTask);
 
             // Act
-            var result = await _taskService.UpdateTaskAsync(taskId, taskUpdateDto);
+            var result = await _taskService.UpdateTaskAsync(taskId, taskUpdateDto, 1);
 
             // Assert
             result.Should().BeTrue();
@@ -145,7 +145,7 @@ namespace ToDoList.Tests
                                .ReturnsAsync((Domain.Entities.Task?)null);
 
             // Act
-            var result = await _taskService.UpdateTaskAsync(taskId, taskUpdateDto);
+            var result = await _taskService.UpdateTaskAsync(taskId, taskUpdateDto, 1);
 
             // Assert
             result.Should().BeFalse();
@@ -165,7 +165,7 @@ namespace ToDoList.Tests
                            .Returns((Domain.Entities.Task task) => new TaskGetDto { Id = task.Id, Title = task.Title });
 
             // Act
-            var result = await _taskService.GetAllTasksAsync();
+            var result = await _taskService.GetAllTasksAsync(1);
 
             // Assert
             result.Should().NotBeNull();
