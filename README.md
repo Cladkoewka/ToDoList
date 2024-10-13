@@ -2,9 +2,11 @@
 
 **To-Do List API** is a pet project designed to practice skills in software development, focusing on RESTful principles. This API allows managing tasks (To-Do) with support for tags, users, and categories. The project is built using **ASP.NET Core 8** with **Entity Framework Core** for database interaction and **PostgreSQL** as the database. **Fluent Validation** is used for data validation, and **Data Transfer Objects (DTOs)** are employed to streamline communication between the client and server. Additionally, **Serilog** is implemented for logging, including support for **Seq** and **Elasticsearch** for storing and analyzing logs.
 
-The project now also utilizes **xUnit** for unit testing, **Moq** for mocking dependencies, **FluentAssertions** for more readable assertions in tests, and **AutoFixture** for automated test data generation. Additionally, Docker is used to run the API in a container alongside PostgreSQL, providing an efficient development and deployment environment. The image for the API is available on Docker Hub as `cladkoewka/todolist.api:latest`.
+The project now also utilizes **xUnit** for unit testing, **Moq** for mocking dependencies, **FluentAssertions** for more readable assertions in tests, and **AutoFixture** for automated test data generation. Docker is used to run the API in a container alongside PostgreSQL, providing an efficient development and deployment environment. The image for the API is available on Docker Hub as `cladkoewka/to-do-api-cladkoewka:latest`.
 
-The project demonstrates key principles of **Clean Architecture**, ensuring separation of concerns, flexibility, and scalability, making it a great example for honing development skills and applying best practices in API design.
+The API and database are deployed using **Render**, while the frontend is hosted on **GitHub Pages**. The project demonstrates key principles of **Clean Architecture**, ensuring separation of concerns, flexibility, and scalability, making it a great example for honing development skills and applying best practices in API design.
+
+You can access the frontend at: [To-Do List Frontend](https://github.com/Cladkoewka/ToDoListFrontend).
 
 ## Technologies Used
 
@@ -14,7 +16,7 @@ The project demonstrates key principles of **Clean Architecture**, ensuring sepa
 - **Fluent Validation**
 - **DTOs** for data transfer
 - **Serilog** for logging (including **Seq** and **Elasticsearch**)
-- **xUnit** for unit testing (with **Moq**, **FluentAssertions** and **AutoFixture**)
+- **xUnit** for unit testing (with **Moq**, **FluentAssertions**, and **AutoFixture**)
 - **Docker** for containerization
 
 ## Endpoints
@@ -45,7 +47,6 @@ The project demonstrates key principles of **Clean Architecture**, ensuring sepa
 - **PUT /api/users/{id}** — Updates an existing user.
 - **DELETE /api/users/{id}** — Deletes a user by their ID.
 
-
 ## Deployment Instructions
 
 ### Prerequisites
@@ -55,10 +56,10 @@ The project demonstrates key principles of **Clean Architecture**, ensuring sepa
 
 1. **Pull the API Image from Docker Hub**
 
-   Run the following command to download API image:
+   Run the following command to download the API image:
 
    ```bash
-   docker pull cladkoewka/todolist.api:latest
+   docker pull cladkoewka/to-do-api-cladkoewka:latest
    ```
 
 2. **Create the `docker-compose.yml`**
@@ -85,6 +86,10 @@ The project demonstrates key principles of **Clean Architecture**, ensuring sepa
 
    You can test the API endpoints using tools like [Postman](https://www.postman.com/).
 
-## Frontend Example
+## Contribution
 
-![Front](https://github.com/user-attachments/assets/e3828576-85ea-4f59-b40d-42cca9947d3c)
+Feel free to fork the repository, make changes, and create a pull request. Contributions are welcome!
+
+## License
+
+This project is licensed under the MIT License.
