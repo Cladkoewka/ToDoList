@@ -6,7 +6,9 @@ The project now also utilizes **xUnit** for unit testing, **Moq** for mocking de
 
 The API and database are deployed using **Render**, while the frontend is hosted on **GitHub Pages**. The project demonstrates key principles of **Clean Architecture**, ensuring separation of concerns, flexibility, and scalability, making it a great example for honing development skills and applying best practices in API design.
 
-You can access the frontend at: [To-Do List Frontend](https://github.com/Cladkoewka/ToDoListFrontend).
+You can access the frontend at: [To-Do List Frontend](https://github.com/Cladkoewka/ToDoListFrontend)
+
+You can try it at: [To-Do List GitHub Pages](https://cladkoewka.github.io/ToDoListFrontend/)
 
 ## Technologies Used
 
