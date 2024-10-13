@@ -27,19 +27,20 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
 
 
 var services = builder.Services;
-var configuration = builder.Configuration;
 
+var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY");
 
 // DbContext configuration
 services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connectionString));
 
-const string policyName = "AllowTestOrigin";
+const string policyName = "AllowRenderOrigin";
 services.AddCors(options =>
 {
     options.AddPolicy(policyName, builder =>
     {
-        builder.WithOrigins("http://localhost:5500", "http://127.0.0.1:5500")
+        builder.WithOrigins("https://cladkoewka.github.io", "http://localhost:5500")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials();
@@ -56,7 +57,7 @@ services.AddAuthentication(options =>
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["Jwt:Key"])),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtKey)),
         ValidateIssuer = false,
         ValidateAudience = false
     };
