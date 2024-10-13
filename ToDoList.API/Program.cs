@@ -31,11 +31,6 @@ var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")/*"User
 var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")/*"SecretKeySecretKeySecretKeySecretKey"*/;
 
 
-if (string.IsNullOrEmpty(jwtKey))
-{
-    throw new ArgumentNullException("JWT_KEY");
-}
-
 // DbContext configuration
 services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));

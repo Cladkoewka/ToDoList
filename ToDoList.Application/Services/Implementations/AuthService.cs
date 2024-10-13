@@ -47,11 +47,6 @@ public class AuthService : IAuthService
         var tokenHandler = new JwtSecurityTokenHandler();
         var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")/*"SecretKeySecretKeySecretKeySecretKey"*/;
         
-        if (string.IsNullOrWhiteSpace(jwtKey))
-        {
-            throw new InvalidOperationException("JWT_KEY environment variable is not set.");
-        }
-        
         _logger.Debug($"JWT KEY is {jwtKey}");
         
         var key = Encoding.ASCII.GetBytes(jwtKey);
