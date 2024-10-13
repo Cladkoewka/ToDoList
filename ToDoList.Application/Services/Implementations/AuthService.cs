@@ -15,6 +15,7 @@ public class AuthService : IAuthService
     private readonly IConfiguration _configuration;
     private readonly ILogger _logger;
 
+    
     public AuthService(IUserService userService, IConfiguration configuration)
     {
         _userService = userService;
@@ -25,9 +26,16 @@ public class AuthService : IAuthService
     public async Task<(string? Token, string? Username)> AuthenticateAsync(UserLoginDto loginDto)
     {
         var user = await _userService.GetUserByEmailAsync(loginDto.Email);
-        if (user == null || user.PasswordHash != HashPassword(loginDto.Password))
+    
+        if (user == null)
         {
-            _logger.Warning("Authentication failed for email {Email}", loginDto.Email);
+            _logger.Warning("User not found for email {Email}", loginDto.Email);
+            return (null, null);
+        }
+
+        if (user.PasswordHash != HashPassword(loginDto.Password))
+        {
+            _logger.Warning("Invalid password for email {Email}", loginDto.Email);
             return (null, null);
         }
 
@@ -37,7 +45,16 @@ public class AuthService : IAuthService
     public string GenerateJwtToken(UserGetDto user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+        var jwtKey = "SecretKeySecretKeySecretKeySecretKey";
+        
+        if (string.IsNullOrWhiteSpace(jwtKey))
+        {
+            throw new InvalidOperationException("JWT_KEY environment variable is not set.");
+        }
+        
+        _logger.Debug($"JWT KEY is {jwtKey}");
+        
+        var key = Encoding.ASCII.GetBytes(jwtKey);
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {

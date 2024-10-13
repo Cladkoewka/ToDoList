@@ -25,25 +25,32 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
     .WriteTo.Console());
 
 
+    
+
 
 var services = builder.Services;
 
-var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
-var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY");
+var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")/*"User ID=postgres;Password=1339;Port=5432;Database=to-do;Host=localhost"*/;
+var jwtKey = "SecretKeySecretKeySecretKeySecretKey"/*Environment.GetEnvironmentVariable("JWT_KEY")*/;
+
+
+if (string.IsNullOrEmpty(jwtKey))
+{
+    throw new ArgumentNullException("JWT_KEY");
+}
 
 // DbContext configuration
 services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-const string policyName = "AllowRenderOrigin";
+const string policyName = "AllowOrigin";
 services.AddCors(options =>
 {
     options.AddPolicy(policyName, builder =>
     {
-        builder.WithOrigins("https://cladkoewka.github.io", "http://localhost:5500")
+        builder.AllowAnyOrigin()
             .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials();
+            .AllowAnyHeader();
     });
 });
 
@@ -92,7 +99,6 @@ services.AddFluentValidation()
 var app = builder.Build();
 
 app.UseRouting();
-
 app.UseCors(policyName);
 
 app.UseAuthentication();

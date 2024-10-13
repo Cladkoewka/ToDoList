@@ -38,14 +38,6 @@ public class AuthController : ControllerBase
             return Unauthorized("Invalid credentials");
         }
         
-        Response.Cookies.Append("authToken", token, new CookieOptions
-        {
-            HttpOnly = true,
-            Secure = false,
-            SameSite = SameSiteMode.None,
-            Expires = DateTimeOffset.UtcNow.AddDays(1)
-        });
-        
         return Ok(new { Token = token, Username = username });
     }
 }
