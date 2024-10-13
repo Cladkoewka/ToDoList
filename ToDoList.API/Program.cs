@@ -25,13 +25,10 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
     .WriteTo.Console());
 
 
-    
-
-
 var services = builder.Services;
 
 var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")/*"User ID=postgres;Password=1339;Port=5432;Database=to-do;Host=localhost"*/;
-var jwtKey = "SecretKeySecretKeySecretKeySecretKey"/*Environment.GetEnvironmentVariable("JWT_KEY")*/;
+var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")/*"SecretKeySecretKeySecretKeySecretKey"*/;
 
 
 if (string.IsNullOrEmpty(jwtKey))
@@ -48,7 +45,7 @@ services.AddCors(options =>
 {
     options.AddPolicy(policyName, builder =>
     {
-        builder.AllowAnyOrigin()
+        builder.WithOrigins("https://cladkoewka.github.io")
             .AllowAnyMethod()
             .AllowAnyHeader();
     });

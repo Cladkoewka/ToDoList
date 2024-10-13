@@ -45,7 +45,7 @@ public class AuthService : IAuthService
     public string GenerateJwtToken(UserGetDto user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var jwtKey = "SecretKeySecretKeySecretKeySecretKey";
+        var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")/*"SecretKeySecretKeySecretKeySecretKey"*/;
         
         if (string.IsNullOrWhiteSpace(jwtKey))
         {
